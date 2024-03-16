@@ -6,10 +6,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="523.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.MainController">
    <children>
-      <Label layoutX="313.0" layoutY="20.0" prefHeight="46.0" prefWidth="85.0" text="Log in:">
+      <Label layoutX="313.0" layoutY="20.0" prefHeight="46.0" prefWidth="156.0" style="-fx-font-family: Times new roman;" text="Log in:">
          <font>
             <Font size="28.0" />
          </font>
@@ -17,18 +18,33 @@
       <ImageView fx:id="imageLog" fitHeight="400.0" fitWidth="292.0" pickOnBounds="true" preserveRatio="true">
          <image>
          </image></ImageView>
-      <Label layoutX="306.0" layoutY="91.0" text="Username:">
+      <Label layoutX="306.0" layoutY="91.0" prefHeight="22.0" prefWidth="113.0" style="-fx-font-family: Times new roman;" stylesheets="@../Style.css" text="Username:">
+         <font>
+            <Font name="Sana Regular" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ussernameLbl" layoutX="309.0" layoutY="117.0" prefHeight="26.0" prefWidth="180.0" promptText="Username" style="-fx-background-color: white;" stylesheets="@../Style.css" />
+      <Label layoutX="309.0" layoutY="186.0" prefHeight="22.0" prefWidth="113.0" style="-fx-font-family: Times new roman;" text="Password:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="ussernameLbl" layoutX="309.0" layoutY="117.0" prefHeight="26.0" prefWidth="180.0" promptText="Username" />
-      <Label layoutX="309.0" layoutY="186.0" text="Password:">
+      <TextField fx:id="passwordLbl" layoutX="309.0" layoutY="212.0" prefHeight="26.0" prefWidth="180.0" promptText="Password" style="-fx-background-color: white;" styleClass="text-field" stylesheets="@../Style.css" />
+      <Button fx:id="logInBTN" layoutX="416.0" layoutY="281.0" mnemonicParsing="false" onAction="#ClickLogInBTN" prefHeight="33.0" prefWidth="70.0" stylesheets="@../Style.css" text="Log in" />
+      <Label layoutX="34.0" layoutY="20.0" prefHeight="60.0" prefWidth="225.0" text="Welcome" textFill="WHITE">
          <font>
-            <Font size="16.0" />
+            <Font size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="passwordLbl" layoutX="309.0" layoutY="212.0" prefHeight="26.0" prefWidth="180.0" promptText="Password" />
-      <Button fx:id="logInBTN" layoutX="416.0" layoutY="281.0" mnemonicParsing="false" onAction="#ClickLogInBTN" prefHeight="33.0" prefWidth="70.0" text="Log in" />
+      <Label layoutX="34.0" layoutY="80.0" text="back" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Text fill="WHITE" layoutX="34.0" layoutY="152.0" lineSpacing="1.5" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Times new roman;" text="Discover millions of events, get alerts about your favorite artists, teams, plays and more — plus always- secure, effortless ticketing." wrappingWidth="192.21630859375" />
+      <Text fill="WHITE" layoutX="219.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E">
+         <font>
+            <Font size="24.0" />
+         </font></Text>
    </children>
 </AnchorPane>
