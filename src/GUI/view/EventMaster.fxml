@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1011.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.EventMasterController">
+   <children>
+      <HBox prefHeight="54.0" prefWidth="1022.0" style="-fx-background-color: blue;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Menu" wrappingWidth="108.53673934936523">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+            </Text>
+            <Button fx:id="LogOutBTN" mnemonicParsing="false" onAction="#ClickLogOut" prefHeight="54.0" prefWidth="80.0" text="Log out">
+               <HBox.margin>
+                  <Insets left="810.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <VBox layoutY="54.0" prefHeight="440.0" prefWidth="132.0">
+         <children>
+            <Button fx:id="NewEventBTN" mnemonicParsing="false" onAction="#ClickNewEvent" prefHeight="50.0" prefWidth="130.0" text="Create New Event" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" text="Future funcionality" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" text="Future Funcionality" />
+         </children>
+      </VBox>
+      <TextField layoutX="830.0" layoutY="64.0" prefHeight="26.0" prefWidth="191.0" promptText="Search events" />
+      <HBox alignment="BOTTOM_CENTER" layoutX="221.0" layoutY="144.0" prefHeight="152.0" prefWidth="200.0" style="-fx-background-color: gray;">
+         <children>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: green;" text="Date">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_CENTER" layoutX="479.0" layoutY="144.0" prefHeight="152.0" prefWidth="200.0" style="-fx-background-color: gray;">
+         <children>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: orange;" text="Date">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_CENTER" layoutX="734.0" layoutY="144.0" prefHeight="152.0" prefWidth="200.0" style="-fx-background-color: gray;">
+         <children>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: yellow;" text="Date">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_CENTER" layoutX="221.0" layoutY="361.0" prefHeight="152.0" prefWidth="200.0" style="-fx-background-color: gray;">
+         <children>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: red;" text="Date">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_CENTER" layoutX="479.0" layoutY="361.0" prefHeight="152.0" prefWidth="200.0" style="-fx-background-color: gray;">
+         <children>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: white;" text="Date">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_CENTER" layoutX="734.0" layoutY="361.0" prefHeight="152.0" prefWidth="200.0" style="-fx-background-color: gray;">
+         <children>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: blue;" text="Date">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Text layoutX="135.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcomig events:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Label alignment="CENTER" layoutX="221.0" layoutY="113.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: green;" text="Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="479.0" layoutY="113.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: orange;" text="Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="734.0" layoutY="113.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: yellow;" text="Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="221.0" layoutY="330.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: red;" text="Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="479.0" layoutY="330.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: white;" text="Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="734.0" layoutY="330.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: blue;" text="Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
