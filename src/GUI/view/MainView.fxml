@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.MainController">
    <children>
       <Label layoutX="313.0" layoutY="20.0" prefHeight="46.0" prefWidth="85.0" text="Log in:">
@@ -15,19 +14,21 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <ImageView fitHeight="400.0" fitWidth="292.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageLog" fitHeight="400.0" fitWidth="292.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+         </image></ImageView>
       <Label layoutX="306.0" layoutY="91.0" text="Username:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField layoutX="309.0" layoutY="117.0" prefHeight="26.0" prefWidth="180.0" promptText="Username" />
+      <TextField fx:id="ussernameLbl" layoutX="309.0" layoutY="117.0" prefHeight="26.0" prefWidth="180.0" promptText="Username" />
       <Label layoutX="309.0" layoutY="186.0" text="Password:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField layoutX="309.0" layoutY="212.0" prefHeight="26.0" prefWidth="180.0" promptText="Password" />
+      <TextField fx:id="passwordLbl" layoutX="309.0" layoutY="212.0" prefHeight="26.0" prefWidth="180.0" promptText="Password" />
       <Button fx:id="logInBTN" layoutX="416.0" layoutY="281.0" mnemonicParsing="false" onAction="#ClickLogInBTN" prefHeight="33.0" prefWidth="70.0" text="Log in" />
    </children>
 </AnchorPane>
