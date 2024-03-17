@@ -1,0 +1,53 @@
+
+.menu-text {
+    -fx-font-size: 36px;
+    -fx-fill: white;
+    -fx-padding: 0 25px;
+}
+
+
+.log-out-button {
+    -fx-pref-height: 54px;
+    -fx-pref-width: 80px;
+    -fx-text-fill: white;
+    -fx-background-color: black;
+}
+
+.log-out-button:hover {
+    -fx-background-color:white;
+    -fx-text-fill: black;
+    -fx-border-color: grey;
+}
+
+.log-out-button:pressed {
+    -fx-translate-y: 1px;
+}
+
+
+.search-field {
+    -fx-prompt-text-fill: #888888;
+    -fx-font-size: 14px;
+    -fx-background-color: #f2f2f2;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+}
+
+.search-field:hover {
+    -fx-border-color: #999999;
+}
+
+.search-field:focused {
+    -fx-border-color: black;
+}
+
+
+.date-label {
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-pref-height: 26px;
+    -fx-pref-width: 200px;
+}

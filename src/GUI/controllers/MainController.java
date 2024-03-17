@@ -1,6 +1,7 @@
 package GUI.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -17,11 +18,16 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-    public Button btnBig;
-    public Button logInBTN;
-    public ImageView imageLog;
-    public TextField ussernameLbl;
-    public TextField passwordLbl;
+    @FXML
+    private Button btnBig;
+    @FXML
+    private Button logInBTN;
+    @FXML
+    private ImageView imageLog;
+    @FXML
+    private TextField ussernameLbl;
+    @FXML
+    private TextField passwordLbl;
     Random rand = new Random();
 
     public void click(ActionEvent actionEvent) {

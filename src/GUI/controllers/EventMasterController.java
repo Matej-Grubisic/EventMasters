@@ -1,6 +1,7 @@
 package GUI.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,7 +11,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class EventMasterController {
+    @FXML
     public Button LogOutBTN;
+    @FXML
     public Button NewEventBTN;
 
     public void ClickLogOut(ActionEvent actionEvent) throws IOException {
