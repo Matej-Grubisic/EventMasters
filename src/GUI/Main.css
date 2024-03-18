@@ -7,16 +7,21 @@
 
 
 .log-out-button {
-    -fx-pref-height: 54px;
-    -fx-pref-width: 80px;
+    -fx-fit-to-height: 50px;
+    -fx-text-fill: white;
+-fx-background-color: black;
+-fx-font-size: 14px;
+}
+
+.create-button{
     -fx-text-fill: white;
     -fx-background-color: black;
+    -fx-font-size: 14px;
 }
 
 .log-out-button:hover {
     -fx-background-color:white;
     -fx-text-fill: black;
-    -fx-border-color: grey;
 }
 
 .log-out-button:pressed {
