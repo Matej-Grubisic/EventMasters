@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,6 +30,8 @@ public class MainController implements Initializable {
     @FXML
     private TextField passwordLbl;
     Random rand = new Random();
+    private static String username = "admin";
+    private static String password = "admin1";
 
     public void click(ActionEvent actionEvent) {
         System.out.println("Weeeeeeeee!");
@@ -36,7 +39,20 @@ public class MainController implements Initializable {
         btnBig.setLayoutY(rand.nextDouble(450));
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Image image = new Image("file:src/background.jpg");
+        imageLog.setImage(image);
+    }
+
     public void ClickLogInBTN(ActionEvent actionEvent) throws IOException {
+        String enteredUsername = ussernameLbl.getText();
+        String enteredPassword = passwordLbl.getText();
+
+        if (!enteredUsername.equals(username) || !enteredPassword.equals(password)) {
+            showError("Incorrect username or password");
+            return;
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
         Parent root = loader.load();
         Stage primaryStage = new Stage();
@@ -47,9 +63,12 @@ public class MainController implements Initializable {
         currentStage.close();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        Image image = new Image("file:src/background.jpg");
-        imageLog.setImage(image);
+    private void showError(String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Login Error");
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
     }
+
 }
