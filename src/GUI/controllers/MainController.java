@@ -33,6 +33,8 @@ public class MainController implements Initializable {
     private static String username = "admin";
     private static String password = "admin1";
 
+
+
     public void click(ActionEvent actionEvent) {
         System.out.println("Weeeeeeeee!");
         btnBig.setLayoutX(rand.nextDouble(700));
