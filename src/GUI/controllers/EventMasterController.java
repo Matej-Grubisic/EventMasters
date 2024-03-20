@@ -16,6 +16,7 @@ public class EventMasterController {
     @FXML
     public Button createEventBTN;
 
+    //When clicked,sets the stage to Log in FXML.
     public void ClickLogOut(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/MainView.fxml"));
         Parent root = loader.load();
@@ -27,6 +28,7 @@ public class EventMasterController {
         currentStage.close();
     }
 
+    //When clicked opens new FXML for creating event.
     public void ClickCreateEvent(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/NewEvent.fxml"));
         Parent root = loader.load();

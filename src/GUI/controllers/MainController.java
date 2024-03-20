@@ -34,11 +34,13 @@ public class MainController implements Initializable {
     private static String password = "admin1";
 
 
+    //When the FXML file is loaded sets background image to the one mentioned.
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Image image = new Image("file:src/background.jpg");
         imageLog.setImage(image);
     }
+
 
     public void ClickLogInBTN(ActionEvent actionEvent) throws IOException {
         String enteredUsername = ussernameLbl.getText();
@@ -59,6 +61,7 @@ public class MainController implements Initializable {
         currentStage.close();
     }
 
+    //Error message to display the user in case of wrong username or password.
     private void showError(String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Login Error");
