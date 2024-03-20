@@ -34,13 +34,6 @@ public class MainController implements Initializable {
     private static String password = "admin1";
 
 
-
-    public void click(ActionEvent actionEvent) {
-        System.out.println("Weeeeeeeee!");
-        btnBig.setLayoutX(rand.nextDouble(700));
-        btnBig.setLayoutY(rand.nextDouble(450));
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Image image = new Image("file:src/background.jpg");

@@ -158,7 +158,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox layoutX="27.0" layoutY="618.0" prefHeight="222.0" prefWidth="274.0">
+                  <VBox layoutX="38.0" layoutY="571.0" prefHeight="222.0" prefWidth="274.0">
                      <children>
                         <ImageView fitHeight="190.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -196,7 +196,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox layoutX="380.0" layoutY="555.0" prefHeight="222.0" prefWidth="274.0">
+                  <VBox layoutX="380.0" layoutY="590.0" prefHeight="222.0" prefWidth="274.0">
                      <children>
                         <ImageView fitHeight="190.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
