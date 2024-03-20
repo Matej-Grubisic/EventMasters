@@ -54,6 +54,7 @@ public class MainController implements Initializable {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
+
         Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
     }
