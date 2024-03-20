@@ -18,19 +18,19 @@
       <ImageView fx:id="imageLog" fitHeight="400.0" fitWidth="292.0" pickOnBounds="true" preserveRatio="true">
          <image>
          </image></ImageView>
-      <Label layoutX="306.0" layoutY="91.0" prefHeight="22.0" prefWidth="113.0" style="-fx-font-family: Times new roman;" stylesheets="@../Style.css" text="Username:">
+      <Label layoutX="306.0" layoutY="91.0" prefHeight="22.0" prefWidth="113.0" style="-fx-font-family: Times new roman;" stylesheets="@../LogIn.css" text="Username:">
          <font>
             <Font name="Sana Regular" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="ussernameLbl" layoutX="309.0" layoutY="117.0" prefHeight="26.0" prefWidth="180.0" promptText="Username" style="-fx-background-color: white;" stylesheets="@../Style.css" />
+      <TextField fx:id="ussernameLbl" layoutX="309.0" layoutY="117.0" prefHeight="26.0" prefWidth="180.0" promptText="Username" style="-fx-background-color: white;" stylesheets="@../LogIn.css" />
       <Label layoutX="309.0" layoutY="186.0" prefHeight="22.0" prefWidth="113.0" style="-fx-font-family: Times new roman;" text="Password:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="passwordLbl" layoutX="309.0" layoutY="212.0" prefHeight="26.0" prefWidth="180.0" promptText="Password" style="-fx-background-color: white;" styleClass="text-field" stylesheets="@../Style.css" />
-      <Button fx:id="logInBTN" layoutX="416.0" layoutY="281.0" mnemonicParsing="false" onAction="#ClickLogInBTN" prefHeight="33.0" prefWidth="70.0" stylesheets="@../Style.css" text="Log in" />
+      <TextField fx:id="passwordLbl" layoutX="309.0" layoutY="212.0" prefHeight="26.0" prefWidth="180.0" promptText="Password" style="-fx-background-color: white;" styleClass="text-field" stylesheets="@../LogIn.css" />
+      <Button fx:id="logInBTN" layoutX="416.0" layoutY="281.0" mnemonicParsing="false" onAction="#ClickLogInBTN" prefHeight="33.0" prefWidth="70.0" stylesheets="@../LogIn.css" text="Log in" />
       <Label layoutX="34.0" layoutY="20.0" prefHeight="60.0" prefWidth="225.0" text="Welcome" textFill="WHITE">
          <font>
             <Font size="36.0" />

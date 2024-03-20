@@ -17,6 +17,14 @@
     -fx-text-fill: white;
     -fx-background-color: black;
     -fx-font-size: 14px;
+    -fx-border-radius: 25;
+}
+.create-button:hover{
+    -fx-background-color:white;
+    -fx-text-fill: black;
+}
+.create-button:pressed{
+    -fx-translate-y: 1px;
 }
 
 .log-out-button:hover {
