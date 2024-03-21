@@ -6,25 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="490.0" prefWidth="303.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.NewEventController">
+<AnchorPane prefHeight="514.0" prefWidth="303.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.NewEventController">
    <children>
       <Label layoutX="61.0" layoutY="14.0" text="Create New Event">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="eventName" layoutX="62.0" layoutY="89.0" prefHeight="25.0" prefWidth="181.0" />
-      <TextField fx:id="eventLoc" layoutX="52.0" layoutY="150.0" prefHeight="25.0" prefWidth="203.0" />
-      <TextField fx:id="eventStart" layoutX="119.0" layoutY="207.0" prefHeight="25.0" prefWidth="65.0" />
-      <TextField fx:id="eventDescription" layoutX="29.0" layoutY="267.0" prefHeight="109.0" prefWidth="253.0" />
-      <Button layoutX="228.0" layoutY="451.0" mnemonicParsing="false" onAction="#createEvent" text="Create" />
-      <Button layoutX="25.0" layoutY="451.0" mnemonicParsing="false" onAction="#cancelEvent" text="Cancel" />
-      <Button layoutX="25.0" layoutY="396.0" mnemonicParsing="false" onAction="#loadEventImage" text="Load image" />
-      <Label fx:id="imageUrl" layoutX="114.0" layoutY="400.0" prefHeight="17.0" prefWidth="131.0" text="Label" />
-      <Label layoutX="102.0" layoutY="61.0" text="Name of the event" />
+      <TextField fx:id="eventName" layoutX="61.0" layoutY="80.0" prefHeight="27.0" prefWidth="181.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
+      <TextField fx:id="eventLoc" layoutX="52.0" layoutY="150.0" prefHeight="25.0" prefWidth="203.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
+      <TextField fx:id="eventStart" layoutX="119.0" layoutY="219.0" prefHeight="25.0" prefWidth="65.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
+      <TextField fx:id="eventDescription" layoutX="27.0" layoutY="288.0" prefHeight="109.0" prefWidth="253.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
+      <Button layoutX="226.0" layoutY="465.0" mnemonicParsing="false" onAction="#createEvent" styleClass="create-button" stylesheets="@../MainScreen.css" text="Create" />
+      <Button layoutX="22.0" layoutY="465.0" mnemonicParsing="false" onAction="#cancelEvent" styleClass="create-button" stylesheets="@../MainScreen.css" text="Cancel" />
+      <Button layoutX="22.0" layoutY="409.0" mnemonicParsing="false" onAction="#loadEventImage" styleClass="create-button" stylesheets="@../MainScreen.css" text="Load image" />
+      <Label fx:id="imageUrl" layoutX="112.0" layoutY="414.0" prefHeight="17.0" prefWidth="131.0" />
+      <Label layoutX="101.0" layoutY="56.0" text="Name of the event" />
       <Label layoutX="129.0" layoutY="124.0" text="Location" />
-      <Label layoutX="125.0" layoutY="183.0" text="Start time" />
-      <Label layoutX="119.0" layoutY="244.0" text="Description " />
+      <Label layoutX="126.0" layoutY="196.0" text="Start time" />
+      <Label layoutX="119.0" layoutY="265.0" text="Description " />
    </children>
 </AnchorPane>

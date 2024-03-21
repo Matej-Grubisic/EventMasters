@@ -1,5 +1,7 @@
 package BE;
 
+import java.awt.*;
+
 public class Event {
     private String name;
     private String location;

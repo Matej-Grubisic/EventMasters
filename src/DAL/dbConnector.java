@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 
 public class dbConnector {
-    private static final String JDBC_URL = "jdbc:sqlserver://10.176.111.34\\EASV-DB4:1433;database=EventMastertrust;ServerCertificate=true";
+    private static final String JDBC_URL = "jdbc:sqlserver://10.176.111.34\\EASV-DB4:1433;database=EventMaster;trust;ServerCertificate=true";
 
     //type the user and password everytime
     private static final String USER = "CSe2023b_e_6";
