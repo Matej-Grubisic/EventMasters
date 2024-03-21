@@ -37,7 +37,7 @@ public class EventMasterController {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
-
+    //On click of the imageview,opens INFO fxml file.
     public void clickedEvent(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/InfoEvent.fxml"));
         Parent root = loader.load();

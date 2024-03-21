@@ -24,15 +24,15 @@ public class NewEventController {
     @FXML
     private Label imageUrl;
     ArrayList<Image> eventImages = new ArrayList<>();
-
+    //Creates event.
     public void createEvent(ActionEvent actionEvent) {
     }
-
+    //Closes the create event FXML file.
     public void cancelEvent(ActionEvent actionEvent) {
         Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
     }
-
+    //On click loades the choosen image.
     public void loadEventImage(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Image");

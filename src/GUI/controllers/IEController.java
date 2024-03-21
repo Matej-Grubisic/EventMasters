@@ -24,12 +24,12 @@ public class IEController {
     @FXML
     private Label descInfo;
 
-
+    //On click closes info FXML
     public void closeInfo(ActionEvent actionEvent) {
         Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
     }
-
+    //On click open edit FXML.
     public void editEvent(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/NewEvent.fxml"));
         Parent root = loader.load();
@@ -38,7 +38,7 @@ public class IEController {
         primaryStage.show();
 
     }
-
+    //Deletes the event.
     public void deleteEvent(ActionEvent actionEvent) {
 
 
