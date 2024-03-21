@@ -218,5 +218,6 @@
             </Pane>
          </content>
       </ScrollPane>
+      <Button fx:id="NewEventCooBTN" layoutX="501.0" layoutY="74.0" mnemonicParsing="false" onAction="#ClickNewEventCooBTN" prefHeight="30.0" prefWidth="169.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="New Event Coordinator" textFill="WHITE" />
    </children>
 </AnchorPane>

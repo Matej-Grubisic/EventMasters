@@ -16,6 +16,7 @@ public class EventMasterController {
     public Button LogOutBTN;
     @FXML
     public Button createEventBTN;
+    public Button NewEventCooBTN;
 
     //When clicked,sets the stage to Log in FXML.
     public void ClickLogOut(ActionEvent actionEvent) throws IOException {
@@ -40,6 +41,14 @@ public class EventMasterController {
     //On click of the imageview,opens INFO fxml file.
     public void clickedEvent(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/InfoEvent.fxml"));
+        Parent root = loader.load();
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public void ClickNewEventCooBTN(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/NewCoordinator.fxml"));
         Parent root = loader.load();
         Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root));
