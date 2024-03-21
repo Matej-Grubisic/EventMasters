@@ -1,5 +1,7 @@
 package GUI.controllers;
 
+import BE.Admin;
+import dal.AdminDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,9 @@ import javafx.scene.control.Alert;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -42,11 +47,21 @@ public class MainController implements Initializable {
     }
 
 
-    public void ClickLogInBTN(ActionEvent actionEvent) throws IOException {
+    public void ClickLogInBTN(ActionEvent actionEvent) throws IOException, NoSuchAlgorithmException {
+        AdminDAO AdminDAO = new AdminDAO();
+        Admin adminAuth = AdminDAO.getAdmin();
         String enteredUsername = ussernameLbl.getText();
         String enteredPassword = passwordLbl.getText();
 
-        if (!enteredUsername.equals(username) || !enteredPassword.equals(password)) {
+        //password gets hashed
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] encodedhash = digest.digest(enteredPassword.getBytes(StandardCharsets.UTF_8));
+
+        //converts the hashed pass to hexadecimal
+        enteredPassword = bytesToHex(encodedhash);
+
+        //checks if everything is alright
+        if (!enteredUsername.equals(adminAuth.getUsername()) || !enteredPassword.equals(adminAuth.getPassword())) {
             showError("Incorrect username or password");
             return;
         }
@@ -68,6 +83,18 @@ public class MainController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(errorMessage);
         alert.showAndWait();
+    }
+
+    private static String bytesToHex(byte[] hash) {
+        StringBuilder hexString = new StringBuilder(2 * hash.length);
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 
 }

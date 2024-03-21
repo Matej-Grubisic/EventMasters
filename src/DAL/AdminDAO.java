@@ -13,14 +13,17 @@ public class AdminDAO {
 
     public Admin getAdmin(){
         try (Connection connection1 = dbConnector.getConn()) {
-            String sql = "SELECT 0 FROM Admin";
+            String sql = "SELECT * FROM Admin";
             Statement stmt = connection1.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            HashMap<String, Integer> artists = null;
-            int id = rs.getInt("ID");
-            String name = rs.getString("Username");
-            String password = rs.getString("Password");
-            return new Admin(id, name, password);
+            Admin admin1 = null;
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                String name = rs.getString("Username");
+                String password = rs.getString("Password");
+                admin1 = new Admin(id, name, password);
+            }
+            return admin1;
             //return persons;
         } catch (SQLException e) {
             throw new RuntimeException(e);
