@@ -1,7 +1,9 @@
 package GUI.controllers;
 
 import BE.Admin;
+import BE.Coordinator;
 import dal.AdminDAO;
+import DAL.CoordinatorDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,6 +52,10 @@ public class MainController implements Initializable {
     public void ClickLogInBTN(ActionEvent actionEvent) throws IOException, NoSuchAlgorithmException {
         AdminDAO AdminDAO = new AdminDAO();
         Admin adminAuth = AdminDAO.getAdmin();
+
+        CoordinatorDAO CoordinatorDAO = new CoordinatorDAO();
+        Coordinator coordinatorAuth = CoordinatorDAO.getCoordinator();
+
         String enteredUsername = ussernameLbl.getText();
         String enteredPassword = passwordLbl.getText();
 
@@ -62,6 +68,10 @@ public class MainController implements Initializable {
 
         //checks if everything is alright
         if (!enteredUsername.equals(adminAuth.getUsername()) || !enteredPassword.equals(adminAuth.getPassword())) {
+            showError("Incorrect username or password");
+            return;
+        }
+        else if (!enteredUsername.equals(coordinatorAuth.getUsername()) || !enteredPassword.equals(coordinatorAuth.getPassword())) {
             showError("Incorrect username or password");
             return;
         }
