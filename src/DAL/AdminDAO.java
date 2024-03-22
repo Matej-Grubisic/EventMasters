@@ -1,4 +1,4 @@
-package dal;
+package DAL;
 
 import BE.Admin;
 import BLL.dbConnector;

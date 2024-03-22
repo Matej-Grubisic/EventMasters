@@ -14,7 +14,7 @@ public class CoordinatorDAO {
 
     public Coordinator getCoordinator(){
         try (Connection connection1 = dbConnector.getConn()) {
-            String sql = "SELECT * FROM Coordinator";
+            String sql = "SELECT * FROM EvCo";
             Statement stmt = connection1.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             Coordinator coordinator1 = null;

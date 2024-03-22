@@ -2,7 +2,7 @@ package GUI.controllers;
 
 import BE.Admin;
 import BE.Coordinator;
-import dal.AdminDAO;
+import DAL.AdminDAO;
 import DAL.CoordinatorDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -71,10 +71,10 @@ public class MainController implements Initializable {
             showError("Incorrect username or password");
             return;
         }
-        else if (!enteredUsername.equals(coordinatorAuth.getUsername()) || !enteredPassword.equals(coordinatorAuth.getPassword())) {
+        /*else if (!enteredUsername.equals(coordinatorAuth.getUsername()) || !enteredPassword.equals(coordinatorAuth.getPassword())) {
             showError("Incorrect username or password");
             return;
-        }
+        }*/
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
         Parent root = loader.load();
         Stage primaryStage = new Stage();

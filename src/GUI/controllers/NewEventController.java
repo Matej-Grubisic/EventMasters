@@ -1,5 +1,7 @@
 package GUI.controllers;
 
+import BE.Event;
+import BLL.EventLogic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,9 +26,24 @@ public class NewEventController {
     @FXML
     private Label imageUrl;
     ArrayList<Image> eventImages = new ArrayList<>();
+    EventLogic el=new EventLogic();
+
+
     //Creates event.
     public void createEvent(ActionEvent actionEvent) {
+        String time = eventStart.getText();
+        String location = eventLoc.getText();
+        String description = eventDescription.getText();
+        String name = eventName.getText();
+
+
+        Event event = new Event(time, description, location,name);
+        el.createEvent(event);
+
+        Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+        currentStage.close();
     }
+
     //Closes the create event FXML file.
     public void cancelEvent(ActionEvent actionEvent) {
         Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
