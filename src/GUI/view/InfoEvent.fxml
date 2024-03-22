@@ -8,22 +8,23 @@
 
 <AnchorPane prefHeight="403.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.IEController">
    <children>
-      <Label layoutX="132.0" layoutY="14.0" text="Information about Event">
+      <Label layoutX="14.0" layoutY="14.0" text="Information about Event">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="64.0" text="Name" />
-      <Label layoutX="39.0" layoutY="122.0" text="Location" />
-      <Label layoutX="19.0" layoutY="181.0" text="Start time and date" />
-      <Label layoutX="31.0" layoutY="236.0" text="Description" />
+      <Label layoutX="23.0" layoutY="58.0" text="Name" />
+      <Label layoutX="23.0" layoutY="109.0" text="Location" />
+      <Label layoutX="25.0" layoutY="167.0" text="Start time and date" />
+      <Label layoutX="25.0" layoutY="218.0" text="Description" />
       <ImageView fx:id="infoImage" fitHeight="272.0" fitWidth="277.0" layoutX="213.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="nameInfo" layoutX="48.0" layoutY="93.0" text="Label" />
-      <Label fx:id="locationInfo" layoutX="34.0" layoutY="151.0" prefHeight="17.0" prefWidth="73.0" text="Label" />
-      <Label fx:id="timendateInfo" layoutX="34.0" layoutY="208.0" prefHeight="17.0" prefWidth="73.0" text="Label" />
-      <Label fx:id="descInfo" layoutX="29.0" layoutY="264.0" prefHeight="115.0" prefWidth="187.0" text="Label" />
-      <Button layoutX="422.0" layoutY="359.0" mnemonicParsing="false" onAction="#closeInfo" prefHeight="27.0" prefWidth="58.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Close" />
-      <Button layoutX="262.0" layoutY="359.0" mnemonicParsing="false" onAction="#editEvent" prefHeight="17.0" prefWidth="58.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Edit" />
-      <Button layoutX="343.0" layoutY="359.0" mnemonicParsing="false" onAction="#deleteEvent" styleClass="create-button" stylesheets="@../MainScreen.css" text="Delete" />
+      <Label fx:id="nameInfo" layoutX="25.0" layoutY="83.0" text="Label" />
+      <Label fx:id="locationInfo" layoutX="24.0" layoutY="136.0" prefHeight="17.0" prefWidth="73.0" text="Label" />
+      <Label fx:id="timendateInfo" layoutX="46.0" layoutY="193.0" prefHeight="17.0" prefWidth="73.0" text="Label" />
+      <Label fx:id="descInfo" layoutX="26.0" layoutY="243.0" prefHeight="115.0" prefWidth="187.0" text="Label" />
+      <Button layoutX="431.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeInfo" prefHeight="27.0" prefWidth="58.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Close" />
+      <Button layoutX="242.0" layoutY="358.0" mnemonicParsing="false" onAction="#editEvent" prefHeight="17.0" prefWidth="58.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Edit" />
+      <Button layoutX="308.0" layoutY="358.0" mnemonicParsing="false" onAction="#deleteEvent" styleClass="create-button" stylesheets="@../MainScreen.css" text="Delete" />
+      <Button layoutX="374.0" layoutY="358.0" mnemonicParsing="false" onAction="#genTicket" prefHeight="30.0" prefWidth="114.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Generate ticket" />
    </children>
 </AnchorPane>
