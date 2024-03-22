@@ -4,10 +4,7 @@ import BE.Admin;
 import BE.Coordinator;
 import BLL.dbConnector;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.HashMap;
 
 public class CoordinatorDAO {
@@ -30,4 +27,18 @@ public class CoordinatorDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public void createCoordinator(Coordinator c){
+        try(Connection connection= dbConnector.getConn()) {
+            String sql ="INSERT INTO EvCo(Username, Password) VALUES(?,?)";
+            PreparedStatement pstmt= connection.prepareStatement(sql);
+            pstmt.setString(1, c.getUsername());
+            pstmt.setString(2,c.getPassword());
+            pstmt.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -71,6 +71,7 @@ public class MainController implements Initializable {
             showError("Incorrect username or password");
             return;
         }
+        //Need to be fixed!!!!
         /*else if (!enteredUsername.equals(coordinatorAuth.getUsername()) || !enteredPassword.equals(coordinatorAuth.getPassword())) {
             showError("Incorrect username or password");
             return;

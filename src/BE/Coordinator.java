@@ -1,5 +1,7 @@
 package BE;
 
+import java.util.Arrays;
+
 public class Coordinator {
     int id;
     String username;
@@ -8,6 +10,11 @@ public class Coordinator {
 
     public Coordinator(int id, String username, String password) {
         this.id = id;
+        this.username = username;
+        this.password = password;
+    }
+
+    public Coordinator(String username, String password) {
         this.username = username;
         this.password = password;
     }

@@ -6,20 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="376.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.NewCoordinator">
+<AnchorPane prefHeight="299.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.NewCoordinator">
    <children>
-      <Label layoutX="11.0" layoutY="14.0" prefHeight="35.0" prefWidth="278.0" text="Create New Coordinator">
+      <Label layoutX="11.0" prefHeight="35.0" prefWidth="278.0" text="Create New Coordinator">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="75.0" layoutY="49.0" prefHeight="23.0" prefWidth="137.0" text="Name of the coordinator" />
-      <TextField layoutX="61.0" layoutY="75.0" prefHeight="23.0" prefWidth="165.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
-      <Label layoutX="83.0" layoutY="140.0" text="Coordinator Username" />
-      <TextField layoutX="60.0" layoutY="158.0" prefHeight="23.0" prefWidth="165.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
-      <Label layoutX="84.0" layoutY="237.0" text="Coordinator Password" />
-      <TextField layoutX="60.0" layoutY="255.0" prefHeight="23.0" prefWidth="165.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
-      <Button fx:id="CreateBTN" layoutX="213.0" layoutY="332.0" mnemonicParsing="false" onAction="#ClickCreateBTN" styleClass="create-button" stylesheets="@../MainScreen.css" text="Create" />
-      <Button fx:id="CancelBTN" layoutX="30.0" layoutY="332.0" mnemonicParsing="false" onAction="#ClickCancleBTN" styleClass="create-button" stylesheets="@../MainScreen.css" text="Cancel" />
+      <Label layoutX="82.0" layoutY="35.0" text="Coordinator Username" />
+      <TextField fx:id="CooUserName" layoutX="59.0" layoutY="53.0" prefHeight="23.0" prefWidth="165.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
+      <Label layoutX="83.0" layoutY="102.0" text="Coordinator Password" />
+      <TextField fx:id="CooPassword" layoutX="59.0" layoutY="120.0" prefHeight="23.0" prefWidth="165.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
+      <Button fx:id="CreateBTN" layoutX="211.0" layoutY="218.0" mnemonicParsing="false" onAction="#ClickCreateBTN" styleClass="create-button" stylesheets="@../MainScreen.css" text="Create" />
+      <Button fx:id="CancelBTN" layoutX="29.0" layoutY="218.0" mnemonicParsing="false" onAction="#ClickCancleBTN" styleClass="create-button" stylesheets="@../MainScreen.css" text="Cancel" />
    </children>
 </AnchorPane>
