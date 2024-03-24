@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
-public class AdminDAO {
+public class AdminDAO implements IAdminDAO {
 
     public Admin getAdmin(){
         try (Connection connection1 = dbConnector.getConn()) {

@@ -3,6 +3,7 @@ package GUI.controllers;
 import BE.Coordinator;
 import BLL.CoordinatorLogic;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -12,10 +13,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class NewCoordinator {
-    public Button CreateBTN;
-    public Button CancelBTN;
-    public TextField CooPassword;
-    public TextField CooUserName;
+    @FXML
+    private Button CreateBTN;
+    @FXML
+    private Button CancelBTN;
+    @FXML
+    private TextField CooPassword;
+    @FXML
+    private TextField CooUserName;
 
     CoordinatorLogic coordinatorLogic = new CoordinatorLogic();
 

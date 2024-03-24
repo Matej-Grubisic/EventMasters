@@ -7,7 +7,7 @@ import BLL.dbConnector;
 import java.sql.*;
 import java.util.HashMap;
 
-public class CoordinatorDAO {
+public class CoordinatorDAO implements ICoordinatorDAO{
 
     public Coordinator getCoordinator(){
         try (Connection connection1 = dbConnector.getConn()) {

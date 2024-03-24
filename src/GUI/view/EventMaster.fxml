@@ -48,12 +48,12 @@
                         <ImageView fx:id="imageV1" fitHeight="190.0" fitWidth="274.0" onMouseClicked="#clickedEvent" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" text="Name" textFill="WHITE">
+                              <Label fx:id="name1" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" text="Date" textFill="WHITE">
+                              <Label fx:id="date1" alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -67,12 +67,12 @@
                         <ImageView fx:id="imageV6" fitHeight="190.0" fitWidth="274.0" onMouseClicked="#clickedEvent" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" text="Name" textFill="WHITE">
+                              <Label fx:id="name6" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" text="Date" textFill="WHITE">
+                              <Label fx:id="date6" alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -86,12 +86,12 @@
                         <ImageView fx:id="imageV2" fitHeight="190.0" fitWidth="274.0" onMouseClicked="#clickedEvent" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" text="Name" textFill="WHITE">
+                              <Label fx:id="name2" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" text="Date" textFill="WHITE">
+                              <Label fx:id="date2" alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -105,12 +105,12 @@
                         <ImageView fx:id="imageV3" fitHeight="190.0" fitWidth="274.0" onMouseClicked="#clickedEvent" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" text="Name" textFill="WHITE">
+                              <Label fx:id="name3" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" text="Date" textFill="WHITE">
+                              <Label fx:id="date3" alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -124,12 +124,12 @@
                         <ImageView fx:id="imageV4" fitHeight="190.0" fitWidth="274.0" onMouseClicked="#clickedEvent" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" text="Name" textFill="WHITE">
+                              <Label fx:id="name4" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" text="Date" textFill="WHITE">
+                              <Label fx:id="date4" alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -143,12 +143,12 @@
                         <ImageView fx:id="imageV5" fitHeight="190.0" fitWidth="274.0" onMouseClicked="#clickedEvent" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" text="Name" textFill="WHITE">
+                              <Label fx:id="name5" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" text="Date" textFill="WHITE">
+                              <Label fx:id="date5" alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>

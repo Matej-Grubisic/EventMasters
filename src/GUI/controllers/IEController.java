@@ -43,4 +43,7 @@ public class IEController {
 
 
     }
+    //Generates the ticket.
+    public void genTicket(ActionEvent actionEvent) {
+    }
 }
