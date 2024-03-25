@@ -48,4 +48,16 @@ public class EventDAO implements IEventDAO{
         }
         return events;
     }
+
+    public void deleteEvent(Event event) {
+        try (Connection con = dbConnector.getConn()) {
+            String sql = "DELETE FROM Event WHERE Name = ?";
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+                pstmt.setString(1, event.getName());
+                pstmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

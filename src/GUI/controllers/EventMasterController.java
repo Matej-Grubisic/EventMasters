@@ -70,6 +70,12 @@ public class EventMasterController implements Initializable {
         updateUIMain(newEvents);
     }
 
+    public void removeEvent(Event event){
+        newEvents.remove(event);
+
+        updateUIMain(newEvents);
+    }
+
 
     /**
      * When clicked,sets the stage to Log in FXML.
@@ -127,6 +133,7 @@ public class EventMasterController implements Initializable {
 
             IEController controller = loader.getController();
             controller.setEvent(selectedEvent);
+            controller.setEventMasterController(this);
             controller.updateUIInfo();
 
             Stage primaryStage = new Stage();
@@ -218,6 +225,7 @@ public class EventMasterController implements Initializable {
                         nameLabel.setText(event.getName());
                         dateLabel.setText(event.getTime());
                     });
+
                 }
             }
         }

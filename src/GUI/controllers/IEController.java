@@ -1,6 +1,7 @@
 package GUI.controllers;
 
 import BE.Event;
+import BLL.EventLogic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class IEController {
     @FXML
@@ -25,9 +28,13 @@ public class IEController {
     @FXML
     private Label descInfo;
     private Event selectedEvent;
+    EventLogic el=new EventLogic();
+    private EventMasterController emc;
 
 
-
+    public void setEventMasterController(EventMasterController eventMasterController) {
+        this.emc=eventMasterController;
+    }
     /**
      * On click closes info FXML
      */
@@ -80,9 +87,31 @@ public class IEController {
      * Deletes the event.
      * @param actionEvent
      */
-    public void deleteEvent(ActionEvent actionEvent) {
+    public void deleteEvent(ActionEvent actionEvent) throws SQLException {
+        if (selectedEvent != null) {
 
+            el.deleteEvent(selectedEvent);
+            emc.removeEvent(selectedEvent);
 
+            emc.updateUIMain(el.getAllEvents());
+
+            Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        }
+
+    }
+
+    private void reloadEventMasterFXML() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
+            Parent root = loader.load();
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -92,4 +121,6 @@ public class IEController {
      */
     public void genTicket(ActionEvent actionEvent) {
     }
+
+
 }
