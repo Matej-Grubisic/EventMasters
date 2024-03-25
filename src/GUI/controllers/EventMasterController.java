@@ -223,6 +223,13 @@ public class EventMasterController implements Initializable {
         }
     }
 
+    public void deleteEvent(ActionEvent actionEvent) {
+        if (selectedEvent != null) {
+            el.deleteEvent(selectedEvent);
+            newEvents.remove(selectedEvent);
+            updateUIMain(newEvents);
+        }
+    }
 
 
 
