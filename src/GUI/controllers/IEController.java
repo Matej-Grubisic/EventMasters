@@ -1,5 +1,6 @@
 package GUI.controllers;
 
+import BE.Event;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,13 +24,48 @@ public class IEController {
     private Label timendateInfo;
     @FXML
     private Label descInfo;
+    private Event selectedEvent;
 
-    //On click closes info FXML
+
+
+    /**
+     * On click closes info FXML
+     */
     public void closeInfo(ActionEvent actionEvent) {
         Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
     }
-    //On click open edit FXML.
+
+
+    /**
+     * Sets the passed event as a selected event.
+     * @param event
+     */
+    public void setEvent(Event event) {
+        this.selectedEvent = event;
+        updateUIInfo();
+    }
+
+
+    /**
+     * Updates labels with info corresponding to the selected event.
+     */
+    public void updateUIInfo() {
+        if (selectedEvent != null) {
+            nameInfo.setText(selectedEvent.getName());
+            locationInfo.setText(selectedEvent.getLocation());
+            timendateInfo.setText(selectedEvent.getTime());
+            descInfo.setText(selectedEvent.getDescription());
+        }
+    }
+
+
+
+    /**
+     * On click open edit FXML.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void editEvent(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/NewEvent.fxml"));
         Parent root = loader.load();
@@ -38,12 +74,22 @@ public class IEController {
         primaryStage.show();
 
     }
-    //Deletes the event.
+
+
+    /**
+     * Deletes the event.
+     * @param actionEvent
+     */
     public void deleteEvent(ActionEvent actionEvent) {
 
 
     }
-    //Generates the ticket.
+
+
+    /**
+     * Generates the ticket.
+     * @param actionEvent
+     */
     public void genTicket(ActionEvent actionEvent) {
     }
 }
