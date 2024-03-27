@@ -29,6 +29,7 @@ import java.util.ResourceBundle;
 
 public class EventMasterController implements Initializable {
 
+    public Button delteCoordinatorBTN;
     @FXML
     private Button LogOutBTN;
     @FXML
@@ -232,8 +233,11 @@ public class EventMasterController implements Initializable {
     }
 
 
-
-
-
-
+    public void ClickDeleteCoordinatorBTN(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/DeleteCoordinator.fxml"));
+        Parent root = loader.load();
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
 }

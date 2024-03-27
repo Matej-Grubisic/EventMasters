@@ -9,4 +9,8 @@ public class CoordinatorLogic {
     public void createCoordinator(Coordinator coordinator){
         coordinatorDAO.createCoordinator(coordinator);
     }
+
+    public void deleteCordinator(int id){
+        coordinatorDAO.deleteMovie(id);
+    }
 }

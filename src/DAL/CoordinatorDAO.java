@@ -41,4 +41,16 @@ public class CoordinatorDAO implements ICoordinatorDAO{
         }
     }
 
+    public void deleteMovie(int id){
+      try(Connection connection=dbConnector.getConn()) {
+          String sql="DELETE FROM EvCo WHERE ID=?";
+          PreparedStatement pstmt= connection.prepareStatement(sql);
+          pstmt.setInt(1, id);
+          pstmt.execute();
+      } catch (SQLException e) {
+          throw new RuntimeException(e);
+      }
+
+    }
+
 }

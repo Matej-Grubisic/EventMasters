@@ -37,6 +37,9 @@ public class NewCoordinator {
         Coordinator coordinator= new Coordinator(username, enteredPassword);
         coordinatorLogic.createCoordinator(coordinator);
 
+        Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+        currentStage.close();
+
 
     }
 

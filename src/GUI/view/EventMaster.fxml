@@ -219,5 +219,6 @@
          </content>
       </ScrollPane>
       <Button fx:id="NewEventCooBTN" layoutX="533.0" layoutY="69.0" mnemonicParsing="false" onAction="#ClickNewEventCooBTN" prefHeight="30.0" prefWidth="169.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="New Event Coordinator" textFill="WHITE" />
+      <Button fx:id="delteCoordinatorBTN" layoutX="373.0" layoutY="69.0" mnemonicParsing="false" onAction="#ClickDeleteCoordinatorBTN" styleClass="create-button" stylesheets="@../MainScreen.css" text="Delete Coordinator" textFill="WHITE" />
    </children>
 </AnchorPane>
