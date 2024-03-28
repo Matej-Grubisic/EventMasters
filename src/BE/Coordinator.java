@@ -14,6 +14,11 @@ public class Coordinator {
         this.password = password;
     }
 
+    public Coordinator(String username,int id) {
+        this.username = username;
+        this.id = id;
+    }
+
     public Coordinator(String username, String password) {
         this.username = username;
         this.password = password;

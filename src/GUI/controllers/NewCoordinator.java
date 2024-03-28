@@ -23,6 +23,7 @@ public class NewCoordinator {
     private TextField CooUserName;
 
     CoordinatorLogic coordinatorLogic = new CoordinatorLogic();
+    private ViewCoordinator viewcontroller;
 
     public void ClickCreateBTN(ActionEvent actionEvent) throws NoSuchAlgorithmException {
         String username= CooUserName.getText();
@@ -36,6 +37,9 @@ public class NewCoordinator {
 
         Coordinator coordinator= new Coordinator(username, enteredPassword);
         coordinatorLogic.createCoordinator(coordinator);
+
+        Coordinator newCoor = coordinatorLogic.getCoordinator();
+        viewcontroller.UpdateTable(newCoor);
 
         Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
@@ -58,5 +62,9 @@ public class NewCoordinator {
             hexString.append(hex);
         }
         return hexString.toString();
+    }
+
+    public void setNewCoordinatorController(ViewCoordinator viewCoordinator) {
+        this.viewcontroller = viewCoordinator;
     }
 }

@@ -1,0 +1,15 @@
+.button{
+    -fx-text-fill: white;
+    -fx-background-color: black;
+    -fx-font-size: 14px;
+    -fx-border-radius: 25;
+}
+
+.button:hover{
+    -fx-background-color:grey;
+    -fx-text-fill: black;
+}
+
+.button:pressed{
+    -fx-translate-y: 1px;
+}

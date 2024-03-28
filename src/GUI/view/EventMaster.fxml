@@ -22,12 +22,17 @@
                   <Font size="36.0" />
                </font>
                <HBox.margin>
-                  <Insets left="25.0" />
+                  <Insets left="20.0" />
                </HBox.margin>
             </Text>
+            <Button fx:id="EvCoBtn" mnemonicParsing="false" onAction="#clickViewEvCo" prefHeight="30.0" prefWidth="196.0" styleClass="log-out-button" stylesheets="@../MainScreen.css" text="Event Coordinators" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="1.0" left="500.0" right="5.0" top="12.5" />
+               </HBox.margin>
+            </Button>
             <Button fx:id="LogOutBTN" mnemonicParsing="false" onAction="#ClickLogOut" prefHeight="30.0" prefWidth="84.0" styleClass="log-out-button" stylesheets="@../MainScreen.css" text="Log out" textFill="WHITE">
                <HBox.margin>
-                  <Insets bottom="1.0" left="665.0" top="12.5" />
+                  <Insets bottom="1.0" right="20.0" top="12.5" />
                </HBox.margin>
             </Button>
          </children>
@@ -218,7 +223,5 @@
             </Pane>
          </content>
       </ScrollPane>
-      <Button fx:id="NewEventCooBTN" layoutX="533.0" layoutY="69.0" mnemonicParsing="false" onAction="#ClickNewEventCooBTN" prefHeight="30.0" prefWidth="169.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="New Event Coordinator" textFill="WHITE" />
-      <Button fx:id="delteCoordinatorBTN" layoutX="373.0" layoutY="69.0" mnemonicParsing="false" onAction="#ClickDeleteCoordinatorBTN" styleClass="create-button" stylesheets="@../MainScreen.css" text="Delete Coordinator" textFill="WHITE" />
    </children>
 </AnchorPane>

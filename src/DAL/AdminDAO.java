@@ -2,6 +2,7 @@ package DAL;
 
 import BE.Admin;
 import BLL.dbConnector;
+import DAL.IAdminDAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
