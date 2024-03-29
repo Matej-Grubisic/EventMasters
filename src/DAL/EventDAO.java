@@ -42,11 +42,11 @@ public class EventDAO implements IEventDAO{
                     String name = resultSet.getString("Name");
                     events.add(new Event(time, description, location, name));
                 }
+                return events;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return events;
     }
 
     public void deleteEvent(Event event) {
