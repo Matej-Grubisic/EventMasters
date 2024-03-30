@@ -223,5 +223,6 @@
             </Pane>
          </content>
       </ScrollPane>
+      <Button fx:id="genQRCodeBTN" layoutX="555.0" layoutY="69.0" mnemonicParsing="false" onAction="#clickGenQRCode" styleClass="create-button" stylesheets="@../MainScreen.css" text="Generate QR Code" />
    </children>
 </AnchorPane>

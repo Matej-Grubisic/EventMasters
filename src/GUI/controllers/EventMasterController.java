@@ -32,6 +32,7 @@ public class EventMasterController implements Initializable {
     public Button delteCoordinatorBTN;
 
     public Button EvCoBtn;
+    public Button genQRCodeBTN;
     @FXML
     private Button LogOutBTN;
     @FXML
@@ -233,6 +234,14 @@ public class EventMasterController implements Initializable {
 
     public void clickViewEvCo(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/ViewCoordinator.fxml"));
+        Parent root = loader.load();
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public void clickGenQRCode(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/QRCode.fxml"));
         Parent root = loader.load();
         Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root));
