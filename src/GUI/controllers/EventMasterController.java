@@ -251,7 +251,11 @@ public class EventMasterController implements Initializable {
         primaryStage.show();
     }
 
-    public void viewTickets(ActionEvent actionEvent) {
-
+    public void viewTickets(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TicketsView.fxml"));
+        Parent root = loader.load();
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 }

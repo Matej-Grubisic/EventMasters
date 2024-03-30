@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 
@@ -25,7 +26,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class LogInController implements Initializable {
     @FXML
     private Button btnBig;
     @FXML
@@ -46,10 +47,20 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Image image = new Image("file:src/background.jpg");
         imageLog.setImage(image);
+
+        passwordLbl.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                try {
+                    ClickLogInBTN();
+                } catch (IOException | NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
 
-    public void ClickLogInBTN(ActionEvent actionEvent) throws IOException, NoSuchAlgorithmException {
+    public void ClickLogInBTN() throws IOException, NoSuchAlgorithmException {
         AdminDAO AdminDAO = new AdminDAO();
         Admin adminAuth = AdminDAO.getAdmin();
 
@@ -83,8 +94,8 @@ public class MainController implements Initializable {
         primaryStage.show();
 
 
-        Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-        currentStage.close();
+        Stage stage = (Stage) passwordLbl.getScene().getWindow();
+        stage.close();
     }
 
     //Error message to display the user in case of wrong username or password.
