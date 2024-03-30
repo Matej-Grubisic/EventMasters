@@ -7,6 +7,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
@@ -19,11 +20,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class QRCode {
-    public TextField eventName;
-    public TextField eventLoc;
-    public TextField eventStart;
-    public TextField eventDescription;
-    public Label imageUrl;
+    @FXML
+    private TextField eventName;
+    @FXML
+    private TextField eventLoc;
+    @FXML
+    private TextField eventStart;
+    @FXML
+    private TextField eventDescription;
+    @FXML
+    private Label imageUrl;
 
     ArrayList info=new ArrayList<>();
 

@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 
 public class AdminDAO implements IAdminDAO {
-
+    @Override
     public Admin getAdmin(){
         try (Connection connection1 = dbConnector.getConn()) {
             String sql = "SELECT * FROM Admin";

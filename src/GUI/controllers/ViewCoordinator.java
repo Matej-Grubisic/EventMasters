@@ -19,13 +19,20 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewCoordinator implements Initializable{
-    public Button CreateEvCo;
-    public Button DelEvCo;
-    public TableColumn<Coordinator, String> EvCoName;
-    public TableColumn<Coordinator, Integer> EvCoId;
-    public TableView<Coordinator> EvCoTable;
-    public Button NewEventCooBTN;
-    public Button deleteCoordinatorBTN;
+    @FXML
+    private Button CreateEvCo;
+    @FXML
+    private Button DelEvCo;
+    @FXML
+    private TableColumn<Coordinator, String> EvCoName;
+    @FXML
+    private TableColumn<Coordinator, Integer> EvCoId;
+    @FXML
+    private TableView<Coordinator> EvCoTable;
+    @FXML
+    private Button NewEventCooBTN;
+    @FXML
+    private Button deleteCoordinatorBTN;
 
     CoordinatorLogic coorLogic = new CoordinatorLogic();
 

@@ -1,16 +1,14 @@
 package DAL;
 
-import BE.Admin;
 import BE.Coordinator;
 import BLL.dbConnector;
-import DAL.ICoordinatorDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CoordinatorDAO implements ICoordinatorDAO {
 
+    @Override
     public Coordinator getCoordinator(){
         try (Connection connection1 = dbConnector.getConn()) {
             String sql = "SELECT * FROM EvCo";
@@ -29,7 +27,7 @@ public class CoordinatorDAO implements ICoordinatorDAO {
             throw new RuntimeException(e);
         }
     }
-
+    @Override
     public ArrayList<Coordinator> getCoordinatorAll(){
         try (Connection connection1 = dbConnector.getConn()) {
             String sql = "SELECT * FROM EvCo";
@@ -48,7 +46,7 @@ public class CoordinatorDAO implements ICoordinatorDAO {
             throw new RuntimeException(e);
         }
     }
-
+    @Override
     public void createCoordinator(Coordinator c){
         try(Connection connection= dbConnector.getConn()) {
             String sql ="INSERT INTO EvCo(Username, Password) VALUES(?,?)";
@@ -61,7 +59,7 @@ public class CoordinatorDAO implements ICoordinatorDAO {
             throw new RuntimeException(e);
         }
     }
-
+    @Override
     public void deleteCoordinator(int id){
       try(Connection connection=dbConnector.getConn()) {
           String sql="DELETE FROM EvCo WHERE ID=?";

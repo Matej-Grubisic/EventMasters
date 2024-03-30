@@ -116,10 +116,15 @@ public class IEController {
 
 
     /**
-     * Generates the ticket.
+     * Opens FXML file for choosing ticket type and creating it.
      * @param actionEvent
      */
-    public void genTicket(ActionEvent actionEvent) {
+    public void genTicket(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TicketGen.fxml"));
+        Parent root = loader.load();
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
 

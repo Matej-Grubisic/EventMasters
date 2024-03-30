@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventDAO implements IEventDAO{
-
+    @Override
     public void createEvent(Event event) {
         try (Connection con = dbConnector.getConn()) {
             String sql = "INSERT INTO Event (Time, Location, Notes, Name) VALUES (?, ?, ?, ?)";
@@ -28,7 +28,7 @@ public class EventDAO implements IEventDAO{
         }
 
     }
-
+    @Override
     public List<Event> getAllEvents() {
         List<Event> events = new ArrayList<>();
         try (Connection con = dbConnector.getConn()) {
@@ -48,7 +48,7 @@ public class EventDAO implements IEventDAO{
             throw new RuntimeException(e);
         }
     }
-
+    @Override
     public void deleteEvent(Event event) {
         try (Connection con = dbConnector.getConn()) {
             String sql = "DELETE FROM Event WHERE Name = ?";

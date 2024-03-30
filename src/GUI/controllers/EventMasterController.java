@@ -28,11 +28,14 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class EventMasterController implements Initializable {
-
-    public Button delteCoordinatorBTN;
-
-    public Button EvCoBtn;
-    public Button genQRCodeBTN;
+    @FXML
+    private Button ticketsBtn;
+    @FXML
+    private Button delteCoordinatorBTN;
+    @FXML
+    private Button EvCoBtn;
+    @FXML
+    private Button genQRCodeBTN;
     @FXML
     private Button LogOutBTN;
     @FXML
@@ -246,5 +249,9 @@ public class EventMasterController implements Initializable {
         Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+    }
+
+    public void viewTickets(ActionEvent actionEvent) {
+
     }
 }
