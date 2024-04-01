@@ -82,7 +82,7 @@ public class LogInController implements Initializable {
             showError("Incorrect username or password");
             return;
         }
-        //Need to be fixed!!!!
+        //NEEED TO BE FIXED ASAP!!!!
         /*else if (!enteredUsername.equals(coordinatorAuth.getUsername()) || !enteredPassword.equals(coordinatorAuth.getPassword())) {
             showError("Incorrect username or password");
             return;

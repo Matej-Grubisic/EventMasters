@@ -26,9 +26,8 @@ public class TGController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         types.add("VIP");
-        types.add("+Food");
         types.add("Free Drink");
-        types.add("1st Row");
+        types.add("Regular");
         ticketType.getItems().addAll(types);
 
     }
