@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class EventMasterController implements Initializable {
+    public Button barcodeBTN;
     @FXML
     private Button ticketsBtn;
     @FXML
@@ -253,6 +254,14 @@ public class EventMasterController implements Initializable {
 
     public void viewTickets(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TicketsView.fxml"));
+        Parent root = loader.load();
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public void ClickBarcodeBTN(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Barcode.fxml"));
         Parent root = loader.load();
         Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root));

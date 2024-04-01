@@ -225,5 +225,6 @@
       </ScrollPane>
       <Button fx:id="genQRCodeBTN" layoutX="448.0" layoutY="69.0" mnemonicParsing="false" onAction="#clickGenQRCode" prefHeight="30.0" prefWidth="129.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Generate QR Code" />
       <Button fx:id="ticketsBtn" layoutX="599.0" layoutY="69.0" mnemonicParsing="false" onAction="#viewTickets" prefHeight="30.0" prefWidth="98.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Tickets" textFill="WHITE" />
+      <Button fx:id="barcodeBTN" layoutX="303.0" layoutY="69.0" mnemonicParsing="false" onAction="#ClickBarcodeBTN" styleClass="create-button" stylesheets="@../MainScreen.css" text="Generate Barcode" />
    </children>
 </AnchorPane>
