@@ -45,8 +45,9 @@ public class QRCode {
 
         System.out.println(event.getName());
 
-        String data= String.valueOf(event);
-        String path= "QR";
+        //String data= String.valueOf(event);
+        String data= event.getName() + " " + event.getLocation() + " " + event.getTime() + " "+ event.getDescription();
+        String path= "./src";
 
         BitMatrix matrix= new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE,500, 500);
 
