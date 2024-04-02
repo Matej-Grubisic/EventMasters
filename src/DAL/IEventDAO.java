@@ -9,4 +9,5 @@ public interface IEventDAO {
      void createEvent(Event event);
     List<Event> getAllEvents();
     void deleteEvent(Event event);
+    void updateEvent(Event event);
 }

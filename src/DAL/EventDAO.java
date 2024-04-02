@@ -60,4 +60,20 @@ public class EventDAO implements IEventDAO{
             throw new RuntimeException(e);
         }
     }
+    @Override
+    public void updateEvent(Event event) {
+        try (Connection con = dbConnector.getConn()) {
+            String sql = "UPDATE Event SET Time = ?, Location = ?, Notes = ? WHERE Name = ?";
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+                pstmt.setString(1, event.getTime());
+                pstmt.setString(2, event.getLocation());
+                pstmt.setString(3, event.getDescription());
+                pstmt.setString(4, event.getName());
+
+                pstmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

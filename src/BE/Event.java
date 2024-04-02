@@ -47,4 +47,10 @@ public class Event {
     public String getTime() {
         return time;
     }
+    public void updateEvent(String time, String location, String description, String name) {
+        this.setTime(time);
+        this.setLocation(location);
+        this.setDescription(description);
+        this.setName(name);
+    }
 }

@@ -52,7 +52,7 @@ public class EventMasterController implements Initializable {
     private List<Event> newEvents = new ArrayList<>();
     EventLogic el=new EventLogic();
     private Event selectedEvent;
-
+    private EventLogic eventLogic = new EventLogic();
 
 
     /**
@@ -266,5 +266,10 @@ public class EventMasterController implements Initializable {
         Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+    }
+    public void editEvent(Event event, String time, String location, String description, String name) {
+        event.updateEvent(time, location, description, name);
+        eventLogic.updateEvent(event);
+        updateUIMain(newEvents); // Update UI after editing
     }
 }

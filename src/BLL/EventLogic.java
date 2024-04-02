@@ -16,7 +16,9 @@ public class EventLogic {
     public List<Event> getAllEvents() throws SQLException {
         return eventDAO.getAllEvents();
     }
-
+    public void updateEvent(Event event) {
+        eventDAO.updateEvent(event);
+    }
     public void deleteEvent(Event selectedEvent) {
         eventDAO.deleteEvent(selectedEvent);
     }
