@@ -143,6 +143,7 @@ public class IEController {
     }
 
 
+    //Dont forget to make them not be able to be duplicated
     public void assignCoordinator(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/ViewCoordinator.fxml"));
         Parent root = loader.load();
