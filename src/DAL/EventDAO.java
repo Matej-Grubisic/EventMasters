@@ -36,11 +36,12 @@ public class EventDAO implements IEventDAO{
             try (PreparedStatement pstmt = con.prepareStatement(sql);
                  ResultSet resultSet = pstmt.executeQuery()) {
                 while (resultSet.next()) {
+                    int id = resultSet.getInt("ID");
                     String time = resultSet.getString("Time");
                     String location = resultSet.getString("Location");
                     String description = resultSet.getString("Notes");
                     String name = resultSet.getString("Name");
-                    events.add(new Event(time, description, location, name));
+                    events.add(new Event(id,time, description, location, name));
                 }
                 return events;
             }

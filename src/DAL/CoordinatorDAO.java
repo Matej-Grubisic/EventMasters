@@ -3,6 +3,7 @@ package DAL;
 import BE.Coordinator;
 import BLL.dbConnector;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -27,6 +28,25 @@ public class CoordinatorDAO implements ICoordinatorDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public String getCoordinatorbyId(int coorId){
+        try (Connection connection1 = dbConnector.getConn()) {
+            String sql = "SELECT Username FROM EvCo WHERE ID=?";
+            PreparedStatement pstmt = connection1.prepareStatement(sql);
+            pstmt.setInt(1, coorId);
+            String name = null;
+            try (ResultSet resultSet = pstmt.executeQuery()) {
+                while (resultSet.next()) {
+                    name = resultSet.getString("Username");
+                }
+            }
+            return name;
+            //return persons;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public ArrayList<Coordinator> getCoordinatorAll(){
         try (Connection connection1 = dbConnector.getConn()) {

@@ -38,7 +38,6 @@ public class NewEventController {
     public void setEventMasterController(EventMasterController eventMasterController) {
         this.emc = eventMasterController;
     }
-
     //Creates event.
     public void createEvent(ActionEvent actionEvent) throws IOException {
         String time = eventStart.getText();

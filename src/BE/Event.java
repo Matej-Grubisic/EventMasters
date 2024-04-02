@@ -8,7 +8,17 @@ public class Event {
     private String time;
     private String description;
 
+    int id;
+
     public Event(String time, String description, String location, String name) {
+        this.time=time;
+        this.description=description;
+        this.location=location;
+        this.name=name;
+    }
+
+    public Event(int id,String time, String description, String location, String name) {
+        this.id = id;
         this.time=time;
         this.description=description;
         this.location=location;
@@ -52,5 +62,10 @@ public class Event {
         this.setLocation(location);
         this.setDescription(description);
         this.setName(name);
+    }
+
+    public int getId() {
+
+        return id;
     }
 }

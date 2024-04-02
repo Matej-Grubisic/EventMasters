@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -34,6 +35,13 @@ public class ViewCoordinator implements Initializable{
     @FXML
     private Button deleteCoordinatorBTN;
 
+    private IEController iec;
+
+    public void setIEController(IEController iecontroller) {
+        this.iec = iecontroller;
+    }
+
+
     CoordinatorLogic coorLogic = new CoordinatorLogic();
 
     @Override
@@ -43,6 +51,19 @@ public class ViewCoordinator implements Initializable{
         EvCoTable.setEditable(true);
         EvCoTable.getItems().addAll(coorLogic.getCoordinatorAll());
         EvCoTable.setEditable(false);
+
+        EvCoTable.setRowFactory( tv -> {
+            TableRow<Coordinator> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Coordinator rowData = row.getItem();
+                    System.out.println(rowData);
+                    iec.addEvCo(rowData);
+                }
+            });
+            return row;
+        });
+
     }
 
     public void ClickNewEventCooBTN(ActionEvent actionEvent) throws IOException {

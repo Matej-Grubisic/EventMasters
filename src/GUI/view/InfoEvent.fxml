@@ -42,7 +42,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="19.0" layoutY="367.0" prefHeight="58.0" prefWidth="123.0" text="Label" />
-      <Button layoutX="412.0" layoutY="16.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Assign Co" />
+      <Label fx:id="coordinatorLbl" layoutX="19.0" layoutY="363.0" prefHeight="92.0" prefWidth="157.0" wrapText="true" />
+      <Button fx:id="AssignCo" layoutX="420.0" layoutY="16.0" mnemonicParsing="false" onAction="#assignCoordinator" prefHeight="30.0" prefWidth="86.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Assign Co" />
    </children>
 </AnchorPane>

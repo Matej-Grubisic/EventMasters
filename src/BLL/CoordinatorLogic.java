@@ -17,6 +17,10 @@ public class CoordinatorLogic {
         return coordinatorDAO.getCoordinator();
     }
 
+    public String getCoordinatorbyId(int coorId){
+        return coordinatorDAO.getCoordinatorbyId(coorId);
+    }
+
     public ArrayList<Coordinator> getCoordinatorAll(){
         System.out.println(coordinatorDAO.getCoordinatorAll());
         return coordinatorDAO.getCoordinatorAll();

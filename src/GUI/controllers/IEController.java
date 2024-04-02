@@ -1,6 +1,9 @@
 package GUI.controllers;
 
+import BE.Coordinator;
 import BE.Event;
+import BLL.CoordinatorLogic;
+import BLL.EventEvCoLogic;
 import BLL.EventLogic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +20,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class IEController {
+    public Label coordinatorLbl;
+    public Button AssignCo;
     @FXML
     private ImageView infoImage;
     @FXML
@@ -29,7 +34,12 @@ public class IEController {
     private Label descInfo;
     private Event selectedEvent;
     EventLogic el=new EventLogic();
+
+    EventEvCoLogic eventevcoLogic = new EventEvCoLogic();
+    CoordinatorLogic coorLogic = new CoordinatorLogic();
+
     private EventMasterController emc;
+
 
 
     public void setEventMasterController(EventMasterController eventMasterController) {
@@ -63,6 +73,11 @@ public class IEController {
             locationInfo.setText(selectedEvent.getLocation());
             timendateInfo.setText(selectedEvent.getTime());
             descInfo.setText(selectedEvent.getDescription());
+            final String[] text = {coordinatorLbl.getText()};
+            eventevcoLogic.getByEvent(selectedEvent.getId()).forEach( coorId ->{
+                text[0] = text[0] + coorLogic.getCoordinatorbyId(coorId) + " ";
+            });
+            coordinatorLbl.setText(text[0]);
         }
     }
 
@@ -128,4 +143,22 @@ public class IEController {
     }
 
 
+    public void assignCoordinator(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/ViewCoordinator.fxml"));
+        Parent root = loader.load();
+        ViewCoordinator viewCoordinator = loader.getController();
+        viewCoordinator.setIEController(this);
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public void addEvCo(Coordinator coor){
+        int eventId = selectedEvent.getId();
+        int coorId = coor.getId();
+        eventevcoLogic.createEventEvCo(eventId, coorId);
+        String prevText = coordinatorLbl.getText();
+        String newText = prevText + " " + coor.getUsername();
+        coordinatorLbl.setText(newText);
+    }
 }
