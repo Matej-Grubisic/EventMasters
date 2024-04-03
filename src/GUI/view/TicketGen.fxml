@@ -17,12 +17,17 @@
       </Label>
       <Button layoutX="159.0" layoutY="244.0" mnemonicParsing="false" onAction="#generateTicket" prefHeight="17.0" prefWidth="75.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Generate" />
       <Button layoutX="14.0" layoutY="244.0" mnemonicParsing="false" onAction="#cancelGeneration" styleClass="create-button" stylesheets="@../MainScreen.css" text="Cancel" />
-      <TextField fx:id="customType" layoutX="28.0" layoutY="143.0" prefHeight="28.0" prefWidth="144.0" style="-fx-background-color: white; -fx-border-color: black;" stylesheets="@../MainScreen.css" />
-      <Label layoutX="101.0" layoutY="110.0" text="Custom">
+      <TextField fx:id="quantityField" layoutX="99.0" layoutY="188.0" prefHeight="28.0" prefWidth="51.0" style="-fx-background-color: white; -fx-border-color: black;" stylesheets="@../MainScreen.css" />
+      <Label layoutX="100.0" layoutY="161.0" text="Quantity">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="181.0" layoutY="143.0" mnemonicParsing="false" onAction="#addNewType" prefHeight="0.0" prefWidth="47.0" styleClass="create-button" stylesheets="@../MainScreen.css" text="Add" />
+      <Label layoutX="81.0" layoutY="99.0" text="Customer email">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="emailField" layoutX="47.0" layoutY="131.0" style="-fx-background-color: white; -fx-border-color: black;" />
    </children>
 </AnchorPane>
