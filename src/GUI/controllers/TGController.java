@@ -162,8 +162,6 @@ public class TGController implements Initializable {
        ArrayList<Integer> eventID=ieController.getEventID();
 
        Ticket ticket1=new Ticket(uuid,email, typeID);
-       String data= ticket1.getUUID()+ " "+ ticket1.getEmail()+" "+ ticket1.getTypeID()+" " + eventID;
-       System.out.println(data);
 
        ticketLogic.createTicket(ticket1,eventID);
    }
