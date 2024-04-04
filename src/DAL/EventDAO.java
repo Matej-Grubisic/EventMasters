@@ -77,4 +77,24 @@ public class EventDAO implements IEventDAO{
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public ArrayList<Integer> getEventID(int eventID) {
+        ArrayList<Integer> eventIDs = new ArrayList<>();
+        try (Connection con = dbConnector.getConn()) {
+            String sql = "SELECT * FROM Event WHERE ID=?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, eventID);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int evID = rs.getInt("ID");
+                eventIDs.add(evID);
+            }
+            return eventIDs;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

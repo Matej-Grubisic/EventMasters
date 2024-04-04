@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 
 public class IEController {
     public Label coordinatorLbl;
@@ -137,6 +137,10 @@ public class IEController {
     public void genTicket(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TicketGen.fxml"));
         Parent root = loader.load();
+
+        TGController controller = loader.getController();
+        controller.setInfoEventController(this);
+
         Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -161,5 +165,9 @@ public class IEController {
         String prevText = coordinatorLbl.getText();
         String newText = prevText + " " + coor.getUsername();
         coordinatorLbl.setText(newText);
+    }
+    public ArrayList<Integer> getEventID(){
+        int eventId = selectedEvent.getId();
+        return el.getEventID(eventId);
     }
 }

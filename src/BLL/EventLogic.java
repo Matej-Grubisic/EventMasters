@@ -4,6 +4,7 @@ import BE.Event;
 import DAL.EventDAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 //The class that will pass db methods for controller.
@@ -21,5 +22,9 @@ public class EventLogic {
     }
     public void deleteEvent(Event selectedEvent) {
         eventDAO.deleteEvent(selectedEvent);
+    }
+
+    public ArrayList<Integer> getEventID(int eventID){
+       return eventDAO.getEventID(eventID);
     }
 }

@@ -1,16 +1,24 @@
 package GUI.controllers;
 
+import BE.Ticket;
+import BLL.TicketLogic;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class TGController implements Initializable {
 
@@ -23,6 +31,10 @@ public class TGController implements Initializable {
     public ArrayList<String> types = new ArrayList<>();
     private ContextMenu emailSuggestionsMenu;
     private List<String> emailDomains = new ArrayList<>();
+
+    private IEController ieController;
+
+    TicketLogic ticketLogic=new TicketLogic();
 
 
 
@@ -40,10 +52,18 @@ public class TGController implements Initializable {
 
     }
 
-    public void generateTicket(ActionEvent actionEvent) {
-        if(fieldCheck()){
+    public void setInfoEventController(IEController infoEventController) {
+        this.ieController=infoEventController;
+    }
 
-            //PUT GENERATE LOGIC HERE
+    public void generateTicket(ActionEvent actionEvent) throws IOException {
+        if(fieldCheck()){
+          storeTicketInfo();
+
+
+            Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
 
 
         }
@@ -117,7 +137,36 @@ public class TGController implements Initializable {
         return false;
     }
 
+   private void storeTicketInfo(){
+        //Asigns typeID to the tickets depending on what type are they
+       int typeID = 0;
+       String ticketTypeValue = ticketType.getValue();
+       switch(ticketTypeValue) {
+           case "Free Drinks":
+               typeID = 0;
+               break;
+           case "Regular":
+               typeID = 1;
+               break;
+           case "VIP":
+               typeID = 2;
+               break;
+           default:
+               break;
+       }
+       //Generates UUID
+       UUID uuid = UUID.randomUUID();
+       //Gets the email from the field
+       String email= emailField.getText();
+       //Gets the id from the event
+       ArrayList<Integer> eventID=ieController.getEventID();
 
+       Ticket ticket1=new Ticket(uuid,email, typeID);
+       String data= ticket1.getUUID()+ " "+ ticket1.getEmail()+" "+ ticket1.getTypeID()+" " + eventID;
+       System.out.println(data);
+
+       ticketLogic.createTicket(ticket1,eventID);
+   }
 
 
 
