@@ -89,7 +89,7 @@ public class IEController {
      * @throws IOException
      */
     public void editEvent(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/NewEvent.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EditEvent.fxml"));
         Parent root = loader.load();
         Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root));
