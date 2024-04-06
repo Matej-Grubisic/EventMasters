@@ -43,7 +43,7 @@ public class NewEventController {
 
         Event event = new Event(time, description, location,name);
         el.createEvent(event);
-        emc.addEvent(event);
+        emc.addEvent(event,eventImages);
 
         Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
@@ -69,6 +69,7 @@ public class NewEventController {
         if (file != null) {
 
             Image image = new Image(file.toURI().toString());
+            imageUrl.setText(image.getUrl());
 
             eventImages.add(image);
         }

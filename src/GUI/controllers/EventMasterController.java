@@ -11,10 +11,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,7 +28,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class EventMasterController implements Initializable {
-    public Button barcodeBTN;
+    @FXML
+    private Button barcodeBTN;
+    @FXML
+    private AnchorPane root;
     @FXML
     private Button ticketsBtn;
     @FXML
@@ -40,15 +47,16 @@ public class EventMasterController implements Initializable {
     @FXML
     private Button NewEventCooBTN;
     @FXML
-    private ImageView imageV1,imageV2,imageV3,imageV4,imageV5,imageV6;
+    private ImageView imageV1,imageV2,imageV3,imageV4,imageV5,imageV6,imageV7,imageV8,imageV9;
     @FXML
-    private Label name1,name2,name3,name4,name5,name6;
+    private Label name1,name2,name3,name4,name5,name6,name7,name8,name9;
     @FXML
-    private Label date1,date2,date3,date4,date5,date6;
+    private Label date1,date2,date3,date4,date5,date6,date7,date8,date9;
     private List<Event> newEvents = new ArrayList<>();
     EventLogic el=new EventLogic();
     private Event selectedEvent;
     private EventLogic eventLogic = new EventLogic();
+    private List<ImageView> imageViews;
 
 
     /**
@@ -58,6 +66,31 @@ public class EventMasterController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             updateUIMain(el.getAllEvents());
+            imageViews = new ArrayList<>();
+            imageViews.add(imageV1);
+            imageViews.add(imageV2);
+            imageViews.add(imageV3);
+            imageViews.add(imageV4);
+            imageViews.add(imageV5);
+            imageViews.add(imageV6);
+            imageViews.add(imageV7);
+            imageViews.add(imageV8);
+            imageViews.add(imageV9);
+            //String imagePath = "file:src/placeholder.jpg";
+            //Image image = new Image(imagePath);
+            //imageV1.setImage(image);
+
+            /*for (int i = 1; i <= 9; i++) {
+                String imageViewId = "imageV" + i;
+                ImageView imageView = (ImageView) root.lookup("#" + imageViewId);
+                if (imageView != null) {
+                    imageView.setImage(image);
+                } else {
+                    System.out.println("ImageView not found: " + imageViewId);
+                }
+            }
+            */
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -68,9 +101,9 @@ public class EventMasterController implements Initializable {
     /**
      * Addes newly created events to the list and updates the UI with it.
      */
-    public void addEvent(Event event) {
+    public void addEvent(Event event,ArrayList<Image> eventImages) {
         newEvents.add(event);
-
+        updateUIMainImages(eventImages);
         updateUIMain(newEvents);
     }
 
@@ -126,7 +159,7 @@ public class EventMasterController implements Initializable {
         ImageView clickedImageView = (ImageView) mouseEvent.getSource();
         int index = selectTheEvent(clickedImageView);
 
-        List<Event> eventsList=el.getAllEvents();
+        List<Event> eventsList = el.getAllEvents();
         Collections.reverse(eventsList);
 
         if (!eventsList.isEmpty() && index >= 0 && index < eventsList.size()) {
@@ -166,8 +199,29 @@ public class EventMasterController implements Initializable {
             index = 4;
         } else if (clickedImageView == imageV6) {
             index = 5;
+        } else if (clickedImageView == imageV7) {
+            index = 6;
+        } else if (clickedImageView == imageV8) {
+            index = 7;
+        } else if (clickedImageView == imageV9) {
+            index = 8;
         }
         return index;
+    }
+
+
+    ///IMAGES DISPLAYING LOGIC.
+    public void updateUIMainImages(List<Image> images) {
+        if (images != null && !images.isEmpty()) {
+            Collections.reverse(images);
+            for (int i = 0; i < Math.min(images.size(), imageViews.size()); i++) {
+                Image image = images.get(i);
+                ImageView imageView = imageViews.get(i);
+                if (imageView != null && image != null) {
+                    Platform.runLater(() -> imageView.setImage(image));
+                }
+            }
+        }
     }
 
 
@@ -183,10 +237,11 @@ public class EventMasterController implements Initializable {
     public void updateUIMain(List<Event> events) {
         if (events != null) {
             Collections.reverse(events);
-            for (int i = 0; i < Math.min(events.size(), 6); i++) {
+            for (int i = 0; i < Math.min(events.size(), 9); i++) {
                 Event event = events.get(i);
                 Label nameLabel;
                 Label dateLabel;
+
                 switch (i) {
                     case 0:
                         nameLabel = name1;
@@ -212,6 +267,18 @@ public class EventMasterController implements Initializable {
                         nameLabel = name6;
                         dateLabel = date6;
                         break;
+                    case 6:
+                        nameLabel = name7;
+                        dateLabel = date7;
+                        break;
+                    case 7:
+                        nameLabel = name8;
+                        dateLabel = date8;
+                        break;
+                    case 8:
+                        nameLabel = name9;
+                        dateLabel = date9;
+                        break;
                     default:
                         nameLabel = null;
                         dateLabel = null;
@@ -223,7 +290,6 @@ public class EventMasterController implements Initializable {
                         nameLabel.setText(event.getName());
                         dateLabel.setText(event.getTime());
                     });
-
                 }
             }
         }

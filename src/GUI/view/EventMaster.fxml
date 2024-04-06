@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1011.0" style="-fx-background-color: white;" stylesheets="@../MainScreen.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.EventMasterController">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1011.0" style="-fx-background-color: white;" stylesheets="@../MainScreen.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controllers.EventMasterController">
    <children>
       <HBox prefHeight="54.0" prefWidth="1022.0" style="-fx-background-color: Black;">
          <children>
@@ -162,17 +162,17 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox layoutX="38.0" layoutY="571.0" prefHeight="222.0" prefWidth="274.0">
+                  <VBox layoutX="32.0" layoutY="576.0" prefHeight="222.0" prefWidth="274.0">
                      <children>
-                        <ImageView fitHeight="190.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageV7" fitHeight="190.0" fitWidth="274.0" onMouseClicked="#clickedEvent" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" text="Name" textFill="WHITE">
+                              <Label fx:id="name7" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" text="Date" textFill="WHITE">
+                              <Label fx:id="date7" alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -181,17 +181,17 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox layoutX="721.0" layoutY="581.0" prefHeight="222.0" prefWidth="271.0">
+                  <VBox layoutX="730.0" layoutY="582.0" prefHeight="222.0" prefWidth="271.0">
                      <children>
-                        <ImageView fitHeight="190.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageV9" fitHeight="190.0" fitWidth="274.0" onMouseClicked="#clickedEvent" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" text="Name" textFill="WHITE">
+                              <Label fx:id="name9" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" text="Date" textFill="WHITE">
+                              <Label fx:id="date9" alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -200,17 +200,17 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox layoutX="380.0" layoutY="590.0" prefHeight="222.0" prefWidth="274.0">
+                  <VBox layoutX="377.0" layoutY="580.0" prefHeight="222.0" prefWidth="274.0">
                      <children>
-                        <ImageView fitHeight="190.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageV8" fitHeight="190.0" fitWidth="274.0" onMouseClicked="#clickedEvent" pickOnBounds="true" preserveRatio="true" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" text="Name" textFill="WHITE">
+                              <Label fx:id="name8" alignment="CENTER" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" text="Date" textFill="WHITE">
+                              <Label fx:id="date8" alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: black;" styleClass="date-label" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
