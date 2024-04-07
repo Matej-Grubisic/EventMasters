@@ -15,7 +15,7 @@
       </Label>
       <TextField fx:id="eventName" layoutX="61.0" layoutY="80.0" prefHeight="27.0" prefWidth="181.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
       <TextField fx:id="eventLoc" layoutX="52.0" layoutY="150.0" prefHeight="25.0" prefWidth="203.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
-      <TextField fx:id="eventStart" layoutX="119.0" layoutY="219.0" prefHeight="25.0" prefWidth="65.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
+      <TextField fx:id="eventStart" layoutX="52.0" layoutY="219.0" prefHeight="25.0" prefWidth="203.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
       <TextField fx:id="eventDescription" layoutX="27.0" layoutY="288.0" prefHeight="109.0" prefWidth="253.0" styleClass="search-field" stylesheets="@../MainScreen.css" />
       <Button layoutX="226.0" layoutY="465.0" mnemonicParsing="false" onAction="#createEvent" styleClass="create-button" stylesheets="@../MainScreen.css" text="Create" />
       <Button layoutX="22.0" layoutY="465.0" mnemonicParsing="false" onAction="#cancelEvent" styleClass="create-button" stylesheets="@../MainScreen.css" text="Cancel" />
@@ -23,7 +23,7 @@
       <Label fx:id="imageUrl" layoutX="112.0" layoutY="414.0" prefHeight="17.0" prefWidth="131.0" />
       <Label layoutX="101.0" layoutY="56.0" text="Name of the event" />
       <Label layoutX="129.0" layoutY="124.0" text="Location" />
-      <Label layoutX="126.0" layoutY="196.0" text="Start time" />
+      <Label layoutX="101.0" layoutY="196.0" text="Start time and date" />
       <Label layoutX="119.0" layoutY="265.0" text="Description " />
    </children>
 </AnchorPane>

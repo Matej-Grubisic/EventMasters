@@ -217,6 +217,8 @@ public class EventMasterController implements Initializable {
             for (int i = 0; i < Math.min(images.size(), imageViews.size()); i++) {
                 Image image = images.get(i);
                 ImageView imageView = imageViews.get(i);
+                System.out.println(image);
+                System.out.println(imageView);
                 if (imageView != null && image != null) {
                     Platform.runLater(() -> imageView.setImage(image));
                 }
