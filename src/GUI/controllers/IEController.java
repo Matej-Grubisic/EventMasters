@@ -104,8 +104,10 @@ public class IEController {
      */
     public void deleteEvent(ActionEvent actionEvent) throws SQLException {
         if (selectedEvent != null) {
-
+            EventEvCoLogic EventEvCoLogic = new EventEvCoLogic();
+            EventEvCoLogic.delEvent2(selectedEvent.getId());
             el.deleteEvent(selectedEvent);
+
             emc.removeEvent(selectedEvent);
 
             emc.updateUIMain(el.getAllEvents());

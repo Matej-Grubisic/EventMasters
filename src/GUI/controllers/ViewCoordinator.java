@@ -2,6 +2,7 @@ package GUI.controllers;
 
 import BE.Coordinator;
 import BLL.CoordinatorLogic;
+import BLL.EventEvCoLogic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,7 +80,11 @@ public class ViewCoordinator implements Initializable{
     }
 
     public void ClickDeleteCoordinatorBTN(ActionEvent actionEvent) throws IOException {
+        EventEvCoLogic EventEvCoLogic = new EventEvCoLogic();
+        System.out.println(EvCoTable.getSelectionModel().getSelectedItem().getId());
+        EventEvCoLogic.delEvCo2(EvCoTable.getSelectionModel().getSelectedItem().getId());
         coorLogic.deleteCordinator(EvCoTable.getSelectionModel().getSelectedItem().getId());
+
         EvCoTable.setEditable(true);
         EvCoTable.getItems().remove(EvCoTable.getSelectionModel().getSelectedItem());
         EvCoTable.setEditable(false);
