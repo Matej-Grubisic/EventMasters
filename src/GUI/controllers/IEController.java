@@ -14,10 +14,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class IEController {
     public Label coordinatorLbl;
@@ -39,7 +43,7 @@ public class IEController {
     CoordinatorLogic coorLogic = new CoordinatorLogic();
 
     private EventMasterController emc;
-
+    private ObjectProperty<Event> updatedEventProperty = new SimpleObjectProperty<>(null);
 
 
     public void setEventMasterController(EventMasterController eventMasterController) {
@@ -84,20 +88,35 @@ public class IEController {
 
 
     /**
-     * On click open edit FXML.
-     * @param actionEvent
-     * @throws IOException
+     * Open EditEventController for editing the selected event.
      */
     public void editEvent(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EditEvent.fxml"));
         Parent root = loader.load();
+
+        EditEventController editEventController = loader.getController();
+        editEventController.setSelectedEvent(selectedEvent); // Pass the selected event
+        editEventController.setEventInfoController(this); // Pass instance of IEController
+
         Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
     }
-
-
+    /**
+     * Get the updated event property.
+     */
+    public ObjectProperty<Event> updatedEventProperty() {
+        return updatedEventProperty;
+    }
+    /**
+     * Set the updated event and notify listeners.
+     */
+    public void setUpdatedEvent(Event updatedEvent) {
+        updatedEventProperty.set(updatedEvent);
+        if (emc != null) {
+            emc.updateEventInUI(updatedEvent);
+        }
+    }
     /**
      * Deletes the event.
      * @param actionEvent
@@ -119,16 +138,45 @@ public class IEController {
 
     }
 
-    private void reloadEventMasterFXML() {
+    void reloadEventMasterFXML() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
-            Parent root = loader.load();
-            Stage primaryStage = new Stage();
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
+            // Retrieve all open stages
+            List<Stage> openStages = new ArrayList<>();
+
+            // Get all windows and filter out Stages
+            for (Window window : Window.getWindows()) {
+                if (window instanceof Stage) {
+                    openStages.add((Stage) window);
+                }
+            }
+
+            // Find and close the stage containing EventMaster.fxml
+            for (Stage stage : openStages) {
+                Scene scene = stage.getScene();
+                if (scene != null) {
+                    Parent root = scene.getRoot();
+                    if (root != null && root.getId() != null && root.getId().equals("EventMasterRoot")) {
+                        stage.close();
+                        break;  // Close the first matching stage and exit loop
+                    }
+                }
+            }
+
+            // Open EventMaster.fxml
+            FXMLLoader eventMasterLoader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
+            Parent eventMasterRoot = eventMasterLoader.load();
+
+            Stage eventMasterStage = new Stage();
+            eventMasterStage.setTitle("Event Master"); // Set window title
+            eventMasterStage.setScene(new Scene(eventMasterRoot));
+
+            // Show EventMaster.fxml stage
+            eventMasterStage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 
