@@ -1,12 +1,16 @@
 package DAL;
 
+import BE.Event;
 import BE.Ticket;
 import BLL.dbConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class TicketDAO implements ITicketDAO {
     @Override
@@ -18,7 +22,7 @@ public class TicketDAO implements ITicketDAO {
                 for (int i = 0; i < eventID.size(); i++) {
                     pstmt.setInt(1, eventID.get(i)); // Set the i-th value from the ArrayList
                     pstmt.setInt(2, ticket.getTypeID());
-                    pstmt.setString(3, ticket.getUUID());
+                    pstmt.setString(3, String.valueOf(ticket.getUUID()));
                     pstmt.setString(4, ticket.getEmail());
                     pstmt.addBatch(); // Add the parameters to the batch
                 }
@@ -26,6 +30,40 @@ public class TicketDAO implements ITicketDAO {
 
 
 
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<Ticket> getAllTickets() {
+        ArrayList<Ticket> tickets = new ArrayList<>();
+        try (Connection con = dbConnector.getConn()) {
+            String sql = "SELECT * FROM Ticket";
+            try (PreparedStatement pstmt = con.prepareStatement(sql);
+                 ResultSet resultSet = pstmt.executeQuery()) {
+                while (resultSet.next()) {
+                    int eventId = resultSet.getInt("EventID");
+                    int typeId = resultSet.getInt("TypeID");
+                    String type = "";
+                    switch(typeId) {
+                        case 0:
+                            type = "Free drinks";
+                            break;
+                        case 1:
+                            type = "Regular";
+                            break;
+                        case 2:
+                            type = "VIP";
+                            break;
+                        default:
+                            break;
+                    }
+                    UUID uuid = UUID.fromString(resultSet.getString("UUID"));
+                    String email = resultSet.getString("email");
+                    tickets.add(new Ticket(uuid, email, type, eventId));
+                }
+                return tickets;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -12,4 +12,6 @@ public interface IEventDAO {
     void deleteEvent(Event event);
     void updateEvent(Event event);
     ArrayList<Integer> getEventID(int eventID);
+
+    Event getEvent(int eventID);
 }

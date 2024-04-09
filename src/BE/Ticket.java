@@ -1,11 +1,17 @@
 package BE;
+
 import java.util.UUID;
+
 public class Ticket {
 
     private String UUID;
     private String email;
 
+    private String type;
+
     private int typeID;
+
+    private int eventId;
 
     public Ticket(UUID UUID, String email, int typeID) {
         this.UUID = String.valueOf(UUID);
@@ -13,8 +19,17 @@ public class Ticket {
         this.typeID = typeID;
     }
 
-    public Ticket() {
+    public Ticket(UUID uuid, String email, String type) {
+        this.UUID = String.valueOf(uuid);
+        this.email = email;
+        this.type = type;
+    }
 
+    public Ticket(java.util.UUID uuid, String email, String type, int eventId) {
+        this.UUID = String.valueOf(uuid);
+        this.email = email;
+        this.type = type;
+        this.eventId = eventId;
     }
 
     public int getTypeID() {
@@ -29,8 +44,8 @@ public class Ticket {
         return UUID;
     }
 
-    public void setUUID(String UUID) {
-        this.UUID = UUID;
+    public void setUUID(UUID UUID) {
+        this.UUID = String.valueOf(UUID);
     }
 
     public String getEmail() {
@@ -41,5 +56,16 @@ public class Ticket {
         this.email = email;
     }
 
+    public String getType(){
+        return type;
+    }
+
+    public void setType(String type){
+        this.type = type;
+    }
+
+    public int getEventId(){
+        return eventId;
+    }
 
 }

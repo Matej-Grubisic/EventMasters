@@ -96,5 +96,25 @@ public class EventDAO implements IEventDAO{
         }
     }
 
+    @Override
+    public Event getEvent(int eventID) {
+        try (Connection con = dbConnector.getConn()) {
+            String sql = "SELECT * FROM Event WHERE ID=?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, eventID);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String time = rs.getString("Time");
+                String location = rs.getString("Location");
+                String notes = rs.getString("Notes");
+                String name = rs.getString("Name");
+                return new Event(time, location, notes, name);
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

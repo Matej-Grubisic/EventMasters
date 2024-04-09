@@ -9,8 +9,10 @@
    <children>
       <TableView fx:id="ticketTable" layoutX="4.0" layoutY="11.0" prefHeight="207.0" prefWidth="326.0" styleClass="label" stylesheets="@../LogIn.css">
         <columns>
-          <TableColumn prefWidth="114.0" text="Something" />
-          <TableColumn prefWidth="125.0" text="Something" />
+          <TableColumn fx:id="emailRow" prefWidth="219.2000184059143" text="Email" />
+          <TableColumn fx:id="typeRow" prefWidth="106.39996337890625" text="Type" />
+            <TableColumn fx:id="uuidRow" prefWidth="50.4000244140625" text="UUID" />
+            <TableColumn fx:id="eventId" prefWidth="50.4000244140625" text="eventId" />
         </columns>
       </TableView>
       <Button layoutX="253.0" layoutY="227.0" mnemonicParsing="false" onAction="#printTicket" styleClass="create-button" stylesheets="@../MainScreen.css" text="Print" />

@@ -27,4 +27,8 @@ public class EventLogic {
     public ArrayList<Integer> getEventID(int eventID){
        return eventDAO.getEventID(eventID);
     }
+
+    public Event getEvent(int eventID){
+        return eventDAO.getEvent(eventID);
+    }
 }

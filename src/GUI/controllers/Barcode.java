@@ -36,7 +36,7 @@ public class Barcode {
 
         BitMatrix matrix= new MultiFormatWriter().encode(data, BarcodeFormat.CODE_128,500, 500);
 
-        String fileName = "barcode.jpg";
+        String fileName = "Images/barcode.jpg";
         Path filePath = Paths.get(path, fileName);
 
         MatrixToImageWriter.writeToPath(matrix, "jpg", filePath);

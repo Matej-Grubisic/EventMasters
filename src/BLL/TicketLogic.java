@@ -11,4 +11,8 @@ public class TicketLogic {
     public void createTicket(Ticket ticket, ArrayList<Integer> eventID) {
         ticketDAO.createTicket(ticket, eventID);
     }
+
+    public ArrayList<Ticket> getAllTicket(){
+        return ticketDAO.getAllTickets();
+    }
 }

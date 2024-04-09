@@ -12,11 +12,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class QRCode {
@@ -49,7 +46,7 @@ public class QRCode {
 
         BitMatrix matrix= new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE,500, 500);
 
-        String fileName = "qr_code.jpg";
+        String fileName = "Images/qr_code1.jpg";
         Path filePath = Paths.get(path, fileName);
 
         MatrixToImageWriter.writeToPath(matrix, "jpg", filePath);
