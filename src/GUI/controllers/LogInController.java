@@ -61,41 +61,54 @@ public class LogInController implements Initializable {
 
 
     public void ClickLogInBTN() throws IOException, NoSuchAlgorithmException {
-        AdminDAO AdminDAO = new AdminDAO();
-        Admin adminAuth = AdminDAO.getAdmin();
-
-        CoordinatorDAO CoordinatorDAO = new CoordinatorDAO();
-        Coordinator coordinatorAuth = CoordinatorDAO.getCoordinator();
-
+        // Perform authentication checks
         String enteredUsername = ussernameLbl.getText();
         String enteredPassword = passwordLbl.getText();
 
-        //password gets hashed
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        byte[] encodedhash = digest.digest(enteredPassword.getBytes(StandardCharsets.UTF_8));
+        // Hash the entered password
+        String hashedPassword = hashPassword(enteredPassword);
 
-        //converts the hashed pass to hexadecimal
-        enteredPassword = bytesToHex(encodedhash);
+        AdminDAO adminDAO = new AdminDAO();
+        Admin admin = adminDAO.getAdmin();
 
-        //checks if everything is alright
-        if (!enteredUsername.equals(adminAuth.getUsername()) || !enteredPassword.equals(adminAuth.getPassword())) {
-            showError("Incorrect username or password");
-            return;
+        // Check if the user is an Admin
+        if (enteredUsername.equals(admin.getUsername()) && hashedPassword.equals(admin.getPassword())) {
+            // Redirect to Admin interface
+            // Example: Load Admin dashboard
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
+            Parent root = loader.load();
+            //AdminDashboardController controller = loader.getController();
+            // Pass admin data to the dashboard controller if needed
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+            // Close the login window
+            Stage stage = (Stage) passwordLbl.getScene().getWindow();
+            stage.close();
+        } else {
+            // Check if the user is an Event Coordinator
+            CoordinatorDAO coordinatorDAO = new CoordinatorDAO();
+            Coordinator coordinator = coordinatorDAO.getCoordinator();
+
+            if (enteredUsername.equals(coordinator.getUsername()) && hashedPassword.equals(coordinator.getPassword())) {
+                // Redirect to Coordinator interface
+                // Example: Load Coordinator dashboard
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
+                Parent root = loader.load();
+                //CoordinatorDashboardController controller = loader.getController();
+                // Pass coordinator data to the dashboard controller if needed
+                Stage primaryStage = new Stage();
+                primaryStage.setScene(new Scene(root));
+                primaryStage.show();
+
+                // Close the login window
+                Stage stage = (Stage) passwordLbl.getScene().getWindow();
+                stage.close();
+            } else {
+                showError("Incorrect username or password");
+            }
         }
-        //NEEED TO BE FIXED ASAP!!!!
-        /*else if (!enteredUsername.equals(coordinatorAuth.getUsername()) || !enteredPassword.equals(coordinatorAuth.getPassword())) {
-            showError("Incorrect username or password");
-            return;
-        }*/
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
-        Parent root = loader.load();
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-
-
-        Stage stage = (Stage) passwordLbl.getScene().getWindow();
-        stage.close();
     }
 
     //Error message to display the user in case of wrong username or password.
@@ -119,4 +132,9 @@ public class LogInController implements Initializable {
         return hexString.toString();
     }
 
+    private String hashPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+        return bytesToHex(encodedhash);
+    }
 }
