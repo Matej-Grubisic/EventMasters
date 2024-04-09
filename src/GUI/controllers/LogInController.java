@@ -73,8 +73,7 @@ public class LogInController implements Initializable {
 
         // Check if the user is an Admin
         if (enteredUsername.equals(admin.getUsername()) && hashedPassword.equals(admin.getPassword())) {
-            // Redirect to Admin interface
-            // Example: Load Admin dashboard
+            // Redirect to Admin interface||Should consider if we going to have Admin and Coordinator separete FXML's !!!!
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
             Parent root = loader.load();
             //AdminDashboardController controller = loader.getController();
@@ -111,7 +110,6 @@ public class LogInController implements Initializable {
         }
     }
 
-    //Error message to display the user in case of wrong username or password.
     private void showError(String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Login Error");
