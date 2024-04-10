@@ -3,6 +3,7 @@ package GUI.controllers;
 import BE.Event;
 import BLL.EventLogic;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -76,6 +77,7 @@ public class EventMasterController implements Initializable {
             imageViews.add(imageV7);
             imageViews.add(imageV8);
             imageViews.add(imageV9);
+
             //String imagePath = "file:src/placeholder.jpg";
             //Image image = new Image(imagePath);
             //imageV1.setImage(image);
@@ -297,7 +299,17 @@ public class EventMasterController implements Initializable {
         }
     }
 
-
+    /**
+     * Update the UI after receiving an updated event from IEController.
+     */
+    public void updateEventInUI(Event updatedEvent) {
+        // Replace the old event with the updated event in the list
+        int index = newEvents.indexOf(updatedEvent);
+        if (index != -1) {
+            newEvents.set(index, updatedEvent);
+            updateUIMain(newEvents); // Update the UI with the modified event list
+        }
+    }
 
 
     public void clickViewEvCo(ActionEvent actionEvent) throws IOException {
@@ -331,11 +343,11 @@ public class EventMasterController implements Initializable {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
-    public void editEvent(Event event, String time, String location, String description, String name) {
+   /* public void editEvent(Event event, String time, String location, String description, String name) {
         event.updateEvent(time, location, description, name);
         eventLogic.updateEvent(event);
         updateUIMain(newEvents); // Update UI after editing
-    }
+    }*/
     public List<Event> getNewEvents() {
         return newEvents;
     }

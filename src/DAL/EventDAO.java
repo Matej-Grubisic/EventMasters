@@ -64,17 +64,27 @@ public class EventDAO implements IEventDAO{
     @Override
     public void updateEvent(Event event) {
         try (Connection con = dbConnector.getConn()) {
-            String sql = "UPDATE Event SET Time = ?, Location = ?, Notes = ? WHERE Name = ?";
+            String sql = "UPDATE Event SET Time = ?, Location = ?, Notes = ?, Name = ? WHERE ID = ?";
             try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-                pstmt.setString(1, event.getTime());
-                pstmt.setString(2, event.getLocation());
-                pstmt.setString(3, event.getDescription());
-                pstmt.setString(4, event.getName());
+                // Set parameters for the update query
+                pstmt.setString(1, event.getTime());           // Update Time
+                pstmt.setString(2, event.getLocation());       // Update Location
+                pstmt.setString(3, event.getDescription());    // Update Notes/Description
+                pstmt.setString(4, event.getName());           // Update Name
+                pstmt.setInt(5, event.getId());                 // Identify event by ID
 
-                pstmt.executeUpdate();
+                // Execute the update query
+                int affectedRows = pstmt.executeUpdate();
+
+                if (affectedRows == 0) {
+                    // Handle if no rows were updated (event with specified ID not found)
+                    System.out.println("No event found with ID: " + event.getId());
+                } else {
+                    System.out.println("Event updated successfully: ID - " + event.getId());
+                }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error updating event: " + e.getMessage(), e);
         }
     }
 
