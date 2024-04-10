@@ -2,6 +2,7 @@ package GUI.controllers;
 
 import BE.Event;
 import BLL.EventLogic;
+import GUI.controllers.LogInController;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -95,6 +97,7 @@ public class EventMasterController implements Initializable {
 
         Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
+        LogInController.loggedUser = 0;
     }
 
 
@@ -102,13 +105,18 @@ public class EventMasterController implements Initializable {
      *  When clicked opens new FXML for creating event.
      */
     public void ClickCreateEvent(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/NewEvent.fxml"));
-        Parent root = loader.load();
-        NewEventController newEventController = loader.getController();
-        newEventController.setEventMasterController(this);
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        if(LogInController.loggedUser == 1) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/NewEvent.fxml"));
+            Parent root = loader.load();
+            NewEventController newEventController = loader.getController();
+            newEventController.setEventMasterController(this);
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        }
+        else{
+            showError("An Admin cannot create Events");
+        }
     }
 
 
@@ -300,5 +308,12 @@ public class EventMasterController implements Initializable {
     }*/
     public List<Event> getNewEvents() {
         return newEvents;
+    }
+    private void showError(String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Login Error");
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
     }
 }

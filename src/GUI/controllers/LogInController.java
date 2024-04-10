@@ -39,9 +39,8 @@ public class LogInController implements Initializable {
     private TextField ussernameLbl;
     @FXML
     private TextField passwordLbl;
-    Random rand = new Random();
-    private static String username = "admin";
-    private static String password = "admin1";
+    //If logged User is Event Coordinator logggedUser = 1 if logged User is Admin loggedUser = 2
+    public static int loggedUser;
 
 
     //When the FXML file is loaded sets background image to the one mentioned.
@@ -86,7 +85,7 @@ public class LogInController implements Initializable {
                 Stage primaryStage = new Stage();
                 primaryStage.setScene(new Scene(root));
                 primaryStage.show();
-
+                loggedUser = 1;
                 // Close the login window
                 Stage stage = (Stage) passwordLbl.getScene().getWindow();
                 stage.close();
@@ -106,6 +105,7 @@ public class LogInController implements Initializable {
                 Stage primaryStage = new Stage();
                 primaryStage.setScene(new Scene(root));
                 primaryStage.show();
+                loggedUser = 2;
 
                 // Close the login window
                 Stage stage = (Stage) passwordLbl.getScene().getWindow();

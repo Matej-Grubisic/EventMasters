@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -91,17 +92,22 @@ public class IEController {
      * Open EditEventController for editing the selected event.
      */
     public void editEvent(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EditEvent.fxml"));
-        Parent root = loader.load();
+        if (LogInController.loggedUser == 1) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EditEvent.fxml"));
+            Parent root = loader.load();
 
 
-        EditEventController editEventController = loader.getController();
-        editEventController.setSelectedEvent(selectedEvent); // Pass the selected event
-        editEventController.setEventInfoController(this); // Pass instance of IEController
+            EditEventController editEventController = loader.getController();
+            editEventController.setSelectedEvent(selectedEvent); // Pass the selected event
+            editEventController.setEventInfoController(this); // Pass instance of IEController
 
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        }
+        else{
+            showError("An Admin cannot edit Events");
+        }
     }
     /**
      * Get the updated event property.
@@ -123,7 +129,6 @@ public class IEController {
      */
     public void deleteEvent(ActionEvent actionEvent) throws SQLException, InterruptedException {
         if (selectedEvent != null) {
-
             el.deleteEvent(selectedEvent);
 
             emc.removeEvent(selectedEvent);
@@ -218,5 +223,12 @@ public class IEController {
     public ArrayList<Integer> getEventID(){
         int eventId = selectedEvent.getId();
         return el.getEventID(eventId);
+    }
+    private void showError(String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Login Error");
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
     }
 }

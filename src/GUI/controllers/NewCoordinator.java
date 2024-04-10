@@ -4,6 +4,7 @@ import BE.Coordinator;
 import BLL.CoordinatorLogic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -26,23 +27,23 @@ public class NewCoordinator {
     private ViewCoordinator viewcontroller;
 
     public void ClickCreateBTN(ActionEvent actionEvent) throws NoSuchAlgorithmException {
-        String username= CooUserName.getText();
-        String enteredPassword= CooPassword.getText();
+            String username = CooUserName.getText();
+            String enteredPassword = CooPassword.getText();
 
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        byte[] encodedhash = digest.digest(enteredPassword.getBytes(StandardCharsets.UTF_8));
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digest.digest(enteredPassword.getBytes(StandardCharsets.UTF_8));
 
-        //converts the hashed pass to hexadecimal
-        enteredPassword = bytesToHex(encodedhash);
+            //converts the hashed pass to hexadecimal
+            enteredPassword = bytesToHex(encodedhash);
 
-        Coordinator coordinator= new Coordinator(username, enteredPassword);
-        coordinatorLogic.createCoordinator(coordinator);
+            Coordinator coordinator = new Coordinator(username, enteredPassword);
+            coordinatorLogic.createCoordinator(coordinator);
 
-        Coordinator newCoor = coordinatorLogic.getCoordinator();
-        viewcontroller.UpdateTable(newCoor);
+            Coordinator newCoor = coordinatorLogic.getCoordinator();
+            viewcontroller.UpdateTable(newCoor);
 
-        Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-        currentStage.close();
+            Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            currentStage.close();
 
 
     }
@@ -67,4 +68,6 @@ public class NewCoordinator {
     public void setNewCoordinatorController(ViewCoordinator viewCoordinator) {
         this.viewcontroller = viewCoordinator;
     }
+
+
 }

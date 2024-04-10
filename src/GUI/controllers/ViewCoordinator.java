@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -68,33 +65,49 @@ public class ViewCoordinator implements Initializable{
     }
 
     public void ClickNewEventCooBTN(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/NewCoordinator.fxml"));
-        Parent root = loader.load();
-        NewCoordinator createCoor = loader.getController();
-        createCoor.setNewCoordinatorController(this);
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-        Coordinator coor1 = coorLogic.getCoordinator();
+        if (LogInController.loggedUser == 2) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/NewCoordinator.fxml"));
+            Parent root = loader.load();
+            NewCoordinator createCoor = loader.getController();
+            createCoor.setNewCoordinatorController(this);
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+            Coordinator coor1 = coorLogic.getCoordinator();
+        }
+        else{
+            showError("A Coordinator cannot create new Coordinators");
+        }
 
     }
 
     public void ClickDeleteCoordinatorBTN(ActionEvent actionEvent) throws IOException {
-        EventEvCoLogic EventEvCoLogic = new EventEvCoLogic();
-        System.out.println(EvCoTable.getSelectionModel().getSelectedItem().getId());
-        EventEvCoLogic.delEvCo2(EvCoTable.getSelectionModel().getSelectedItem().getId());
-        coorLogic.deleteCordinator(EvCoTable.getSelectionModel().getSelectedItem().getId());
+        if (LogInController.loggedUser == 2) {
+            EventEvCoLogic EventEvCoLogic = new EventEvCoLogic();
+            System.out.println(EvCoTable.getSelectionModel().getSelectedItem().getId());
+            EventEvCoLogic.delEvCo2(EvCoTable.getSelectionModel().getSelectedItem().getId());
+            coorLogic.deleteCordinator(EvCoTable.getSelectionModel().getSelectedItem().getId());
 
-        EvCoTable.setEditable(true);
-        EvCoTable.getItems().remove(EvCoTable.getSelectionModel().getSelectedItem());
-        EvCoTable.setEditable(false);
+            EvCoTable.setEditable(true);
+            EvCoTable.getItems().remove(EvCoTable.getSelectionModel().getSelectedItem());
+            EvCoTable.setEditable(false);
+        }
+        else {
+            showError("A Coordinator cannot delete othter event Coordinators");
+        }
     }
 
     public void UpdateTable(Coordinator coordinator){
         EvCoTable.getItems().add(coordinator);
     }
 
-
+    private void showError(String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Login Error");
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
+    }
 
 
 }
