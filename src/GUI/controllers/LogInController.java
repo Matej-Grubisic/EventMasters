@@ -23,6 +23,8 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -67,30 +69,14 @@ public class LogInController implements Initializable {
 
         // Hash the entered password
         String hashedPassword = hashPassword(enteredPassword);
-
-        AdminDAO adminDAO = new AdminDAO();
-        Admin admin = adminDAO.getAdmin();
-
-        // Check if the user is an Admin
-        if (enteredUsername.equals(admin.getUsername()) && hashedPassword.equals(admin.getPassword())) {
-            // Redirect to Admin interface||Should consider if we going to have Admin and Coordinator separete FXML's !!!!
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
-            Parent root = loader.load();
-            //AdminDashboardController controller = loader.getController();
-            // Pass admin data to the dashboard controller if needed
-            Stage primaryStage = new Stage();
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
-
-            // Close the login window
-            Stage stage = (Stage) passwordLbl.getScene().getWindow();
-            stage.close();
-        } else {
-            // Check if the user is an Event Coordinator
-            CoordinatorDAO coordinatorDAO = new CoordinatorDAO();
-            Coordinator coordinator = coordinatorDAO.getCoordinator();
-
-            if (enteredUsername.equals(coordinator.getUsername()) && hashedPassword.equals(coordinator.getPassword())) {
+        CoordinatorDAO coordinatorDAO = new CoordinatorDAO();
+        ArrayList<Coordinator> coordinators = coordinatorDAO.getCoordinatorAll();
+        ArrayList<String> passwords = new ArrayList<>();
+        for(Coordinator c : coordinators){
+            passwords.add(c.getPassword());
+        }
+        for (Coordinator c : coordinators) {
+            if (c.getUsername().equals(enteredUsername) && c.getPassword().equals(hashedPassword)) {
                 // Redirect to Coordinator interface
                 // Example: Load Coordinator dashboard
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
@@ -104,11 +90,36 @@ public class LogInController implements Initializable {
                 // Close the login window
                 Stage stage = (Stage) passwordLbl.getScene().getWindow();
                 stage.close();
-            } else {
-                showError("Incorrect username or password");
+
             }
         }
+
+        AdminDAO adminDAO = new AdminDAO();
+        Admin admin = adminDAO.getAdmin();
+        // Check if the user is an Admin
+            if (enteredUsername.equals(admin.getUsername()) && hashedPassword.equals(admin.getPassword())) {
+                // Redirect to Admin interface||Should consider if we going to have Admin and Coordinator separete FXML's !!!!
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
+                Parent root = loader.load();
+                //AdminDashboardController controller = loader.getController();
+                // Pass admin data to the dashboard controller if needed
+                Stage primaryStage = new Stage();
+                primaryStage.setScene(new Scene(root));
+                primaryStage.show();
+
+                // Close the login window
+                Stage stage = (Stage) passwordLbl.getScene().getWindow();
+                stage.close();
+            } else if(!hashedPassword.equals(admin.getPassword()) && !passwords.contains(hashedPassword)){
+                showError("Incorrect username or password");
+            }
+
+                // Check if the user is an Event Coordinator
+
+
     }
+
+
 
     private void showError(String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

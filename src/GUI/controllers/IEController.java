@@ -94,6 +94,7 @@ public class IEController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EditEvent.fxml"));
         Parent root = loader.load();
 
+
         EditEventController editEventController = loader.getController();
         editEventController.setSelectedEvent(selectedEvent); // Pass the selected event
         editEventController.setEventInfoController(this); // Pass instance of IEController
@@ -111,20 +112,18 @@ public class IEController {
     /**
      * Set the updated event and notify listeners.
      */
-    public void setUpdatedEvent(Event updatedEvent) {
-        updatedEventProperty.set(updatedEvent);
-        if (emc != null) {
-            emc.updateEventInUI(updatedEvent);
-        }
+
+    public void updateEvent(List<Event> events) throws SQLException{
+        emc.updateUIMain(events);
     }
+
     /**
      * Deletes the event.
      * @param actionEvent
      */
-    public void deleteEvent(ActionEvent actionEvent) throws SQLException {
+    public void deleteEvent(ActionEvent actionEvent) throws SQLException, InterruptedException {
         if (selectedEvent != null) {
-            EventEvCoLogic EventEvCoLogic = new EventEvCoLogic();
-            EventEvCoLogic.delEvent2(selectedEvent.getId());
+
             el.deleteEvent(selectedEvent);
 
             emc.removeEvent(selectedEvent);

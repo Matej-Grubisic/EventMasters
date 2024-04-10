@@ -15,7 +15,6 @@
             <TableColumn fx:id="eventId" prefWidth="50.4000244140625" text="eventId" visible="false" />
         </columns>
       </TableView>
-      <Button layoutX="253.0" layoutY="227.0" mnemonicParsing="false" onAction="#printTicket" styleClass="create-button" stylesheets="@../MainScreen.css" text="Print" />
-      <Button layoutX="27.0" layoutY="229.0" mnemonicParsing="false" onAction="#deleteTicket" styleClass="create-button" stylesheets="@../MainScreen.css" text="Delete" />
+      <Button layoutX="143.0" layoutY="230.0" mnemonicParsing="false" onAction="#printTicket" styleClass="create-button" stylesheets="@../MainScreen.css" text="Print" />
    </children>
 </AnchorPane>

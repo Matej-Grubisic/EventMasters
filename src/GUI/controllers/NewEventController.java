@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class NewEventController {
@@ -35,7 +36,7 @@ public class NewEventController {
         this.emc = eventMasterController;
     }
     //Creates event.
-    public void createEvent(ActionEvent actionEvent) throws IOException {
+    public void createEvent(ActionEvent actionEvent) throws IOException, SQLException {
         String time = eventStart.getText();
         String location = eventLoc.getText();
         String description = eventDescription.getText();
@@ -44,6 +45,7 @@ public class NewEventController {
         Event event = new Event(time, description, location,name);
         el.createEvent(event);
         emc.addEvent(event,eventImages);
+        emc.updateUIMain(el.getAllEvents());
 
         Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();

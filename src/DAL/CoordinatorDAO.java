@@ -58,7 +58,8 @@ public class CoordinatorDAO implements ICoordinatorDAO {
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 String name = rs.getString("Username");
-                coordinator1 = new Coordinator(name, id);
+                String password = rs.getString("Password");
+                coordinator1 = new Coordinator(id, name, password);
                 coordinators.add(coordinator1);
             }
             return coordinators;

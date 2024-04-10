@@ -43,18 +43,6 @@ public class EventEvCoDAO implements IEventEvCoDAO {
         }
     }
 
-    public void delEvent2(int eventId){
-        try (Connection con = dbConnector.getConn()) {
-            String sql = "DELETE FROM Event_EvCo WHERE EventID = ?";
-            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-                pstmt.setInt(1, eventId);
-                pstmt.executeUpdate();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void delEvCo2(int evcoId){
         try (Connection con = dbConnector.getConn()) {
             String sql = "DELETE FROM Event_EvCo WHERE EvCoID = ?";

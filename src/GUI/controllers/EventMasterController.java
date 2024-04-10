@@ -30,24 +30,6 @@ import java.util.ResourceBundle;
 
 public class EventMasterController implements Initializable {
     @FXML
-    private Button barcodeBTN;
-    @FXML
-    private AnchorPane root;
-    @FXML
-    private Button ticketsBtn;
-    @FXML
-    private Button delteCoordinatorBTN;
-    @FXML
-    private Button EvCoBtn;
-    @FXML
-    private Button genQRCodeBTN;
-    @FXML
-    private Button LogOutBTN;
-    @FXML
-    private Button createEventBTN;
-    @FXML
-    private Button NewEventCooBTN;
-    @FXML
     private ImageView imageV1,imageV2,imageV3,imageV4,imageV5,imageV6,imageV7,imageV8,imageV9;
     @FXML
     private Label name1,name2,name3,name4,name5,name6,name7,name8,name9;
@@ -56,7 +38,6 @@ public class EventMasterController implements Initializable {
     private List<Event> newEvents = new ArrayList<>();
     EventLogic el=new EventLogic();
     private Event selectedEvent;
-    private EventLogic eventLogic = new EventLogic();
     private List<ImageView> imageViews;
 
 
@@ -77,22 +58,6 @@ public class EventMasterController implements Initializable {
             imageViews.add(imageV7);
             imageViews.add(imageV8);
             imageViews.add(imageV9);
-
-            //String imagePath = "file:src/placeholder.jpg";
-            //Image image = new Image(imagePath);
-            //imageV1.setImage(image);
-
-            /*for (int i = 1; i <= 9; i++) {
-                String imageViewId = "imageV" + i;
-                ImageView imageView = (ImageView) root.lookup("#" + imageViewId);
-                if (imageView != null) {
-                    imageView.setImage(image);
-                } else {
-                    System.out.println("ImageView not found: " + imageViewId);
-                }
-            }
-            */
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -302,12 +267,13 @@ public class EventMasterController implements Initializable {
     /**
      * Update the UI after receiving an updated event from IEController.
      */
-    public void updateEventInUI(Event updatedEvent) {
+    public void updateEventInUI(Event updatedEvent) throws SQLException {
         // Replace the old event with the updated event in the list
         int index = newEvents.indexOf(updatedEvent);
         if (index != -1) {
-            newEvents.set(index, updatedEvent);
-            updateUIMain(newEvents); // Update the UI with the modified event list
+            System.out.println("aaa");
+            List<Event> updatedEvents = el.getAllEvents();
+            updateUIMain(updatedEvents); // Update the UI with the modified event list
         }
     }
 
@@ -320,24 +286,8 @@ public class EventMasterController implements Initializable {
         primaryStage.show();
     }
 
-    public void clickGenQRCode(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/QRCode.fxml"));
-        Parent root = loader.load();
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-    }
-
     public void viewTickets(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TicketsView.fxml"));
-        Parent root = loader.load();
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-    }
-
-    public void ClickBarcodeBTN(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Barcode.fxml"));
         Parent root = loader.load();
         Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root));

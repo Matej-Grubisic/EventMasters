@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -30,8 +31,6 @@ import java.util.ArrayList;
      private TextField eventDescription;
      @FXML
      private Button cancelButton;
-     @FXML
-     private Button loadImageButton;
 
      @FXML
      private Button saveButton;
@@ -60,7 +59,13 @@ import java.util.ArrayList;
      @FXML
      private void initialize() {
          cancelButton.setOnAction(event -> closeEditEvent());
-         saveButton.setOnAction(event -> saveChanges());
+         saveButton.setOnAction(event -> {
+             try {
+                 saveChanges();
+             } catch (SQLException e) {
+                 throw new RuntimeException(e);
+             }
+         });
          loadEventData(); // Call method to load event data when FXML is loaded
      }
 
@@ -73,23 +78,23 @@ import java.util.ArrayList;
          }
      }
      @FXML
-     private void saveChanges() {
+     private void saveChanges() throws SQLException {
          String name = eventName.getText();
          String location = eventLoc.getText();
          String time = eventStart.getText();
          String description = eventDescription.getText();
 
+
          selectedEvent.updateEvent(time, location, description, name);
          eventLogic.updateEvent(selectedEvent);
 
-         if (ieController != null) {
-             ieController.setUpdatedEvent(selectedEvent);
-         }
-
          closeEditEvent();
+         ieController.setEvent(selectedEvent);
+         ieController.updateUIInfo();
+         ieController.updateEvent(eventLogic.getAllEvents());
          // Reload the InfoEvent.fxml to reflect the updated event
-         openInfoEventWindow();
-         ieController.reloadEventMasterFXML();
+         //openInfoEventWindow();
+         //ieController.reloadEventMasterFXML();
      }
 
      private void openInfoEventWindow() {

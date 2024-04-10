@@ -17,10 +17,6 @@ public class EventEvCoLogic {
         return eventEvCo.getByEvent(eventId);
     }
 
-    public void delEvent2(int eventId){
-        eventEvCo.delEvent2(eventId);
-    }
-
     public void delEvCo2(int evcoId){
         eventEvCo.delEvCo2(evcoId);
     }

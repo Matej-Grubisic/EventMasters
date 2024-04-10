@@ -52,15 +52,30 @@ public class EventDAO implements IEventDAO{
     @Override
     public void deleteEvent(Event event) {
         try (Connection con = dbConnector.getConn()) {
-            String sql = "DELETE FROM Event WHERE Name = ?";
-            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-                pstmt.setString(1, event.getName());
+            String sql = "DELETE FROM Event_EvCo WHERE EventID = ?";
+            String sql1 = "DELETE FROM Ticket WHERE EventID = ?";
+            String sql2 = "DELETE FROM Event WHERE ID = ?";
+
+
+            try(PreparedStatement pstmt = con.prepareStatement(sql)){
+                pstmt.setInt(1, event.getId());
                 pstmt.executeUpdate();
+            }
+
+            try (PreparedStatement pstmt1 = con.prepareStatement(sql1)) {
+                pstmt1.setInt(1, event.getId());
+                pstmt1.executeUpdate();
+            }
+
+            try (PreparedStatement pstmt2 = con.prepareStatement(sql2)) {
+                pstmt2.setInt(1, event.getId());
+                pstmt2.executeUpdate();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public void updateEvent(Event event) {
         try (Connection con = dbConnector.getConn()) {
