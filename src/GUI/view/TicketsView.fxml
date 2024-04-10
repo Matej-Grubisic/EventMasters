@@ -11,8 +11,8 @@
         <columns>
           <TableColumn fx:id="emailRow" prefWidth="219.2000184059143" text="Email" />
           <TableColumn fx:id="typeRow" prefWidth="106.39996337890625" text="Type" />
-            <TableColumn fx:id="uuidRow" prefWidth="50.4000244140625" text="UUID" />
-            <TableColumn fx:id="eventId" prefWidth="50.4000244140625" text="eventId" />
+            <TableColumn fx:id="uuidRow" prefWidth="50.4000244140625" text="UUID" visible="false" />
+            <TableColumn fx:id="eventId" prefWidth="50.4000244140625" text="eventId" visible="false" />
         </columns>
       </TableView>
       <Button layoutX="253.0" layoutY="227.0" mnemonicParsing="false" onAction="#printTicket" styleClass="create-button" stylesheets="@../MainScreen.css" text="Print" />
