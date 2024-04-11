@@ -1,6 +1,7 @@
 package GUI.controllers;
 
 import BE.Ticket;
+import BLL.Notifications;
 import BLL.TicketLogic;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -35,6 +36,7 @@ public class TGController implements Initializable {
     private IEController ieController;
 
     TicketLogic ticketLogic=new TicketLogic();
+    Notifications nt=new Notifications();
 
 
 
@@ -63,7 +65,7 @@ public class TGController implements Initializable {
 
             Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
             currentStage.close();
-
+            nt.showSuccess("Successfully generated the ticket");
 
 
         }

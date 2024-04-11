@@ -5,6 +5,7 @@ import BE.Coordinator;
 import BE.Event;
 import BE.Ticket;
 import BLL.EventLogic;
+import BLL.Notifications;
 import BLL.TicketLogic;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -56,6 +57,7 @@ public class TicketsViewController implements Initializable {
 
     @FXML
     private TableView <Ticket> ticketTable;
+    Notifications nt=new Notifications();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -156,7 +158,7 @@ public class TicketsViewController implements Initializable {
             doc.add(barcode);
 
             doc.close();
-
+            nt.showSuccess("Successfully printed the ticket");
             // Closing the document
             System.out.println("Image added successfully and PDF file created!");
         }
@@ -166,6 +168,7 @@ public class TicketsViewController implements Initializable {
     }
 
     public void deleteTicket(ActionEvent actionEvent) {
+
     }
 
     private void showError(String errorMessage) {

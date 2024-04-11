@@ -2,6 +2,7 @@ package GUI.controllers;
 
 import BE.Event;
 import BLL.EventLogic;
+import BLL.Notifications;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -30,6 +31,7 @@ public class NewEventController {
     ArrayList<Image> eventImages = new ArrayList<>();
     EventLogic el=new EventLogic();
     private EventMasterController emc;
+    private Notifications nt=new Notifications();
 
 
     public void setEventMasterController(EventMasterController eventMasterController) {
@@ -41,14 +43,18 @@ public class NewEventController {
         String location = eventLoc.getText();
         String description = eventDescription.getText();
         String name = eventName.getText();
+        if(fieldCheck()) {
+            Event event = new Event(time, description, location, name);
+            el.createEvent(event);
+            emc.addEvent(event, eventImages);
+            emc.updateUIMain(el.getAllEvents());
+            nt.showSuccess("Successfully created an event");
 
-        Event event = new Event(time, description, location,name);
-        el.createEvent(event);
-        emc.addEvent(event,eventImages);
-        emc.updateUIMain(el.getAllEvents());
-
-        Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-        currentStage.close();
+            Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+        }else {
+            nt.showError("Please fill out all of the fields");
+        }
     }
 
 
@@ -75,6 +81,15 @@ public class NewEventController {
 
             eventImages.add(image);
         }
+    }
+
+    public boolean fieldCheck(){
+        if (!eventStart.getText().isEmpty() && !eventLoc.getText().isEmpty()&&!eventName.getText().isEmpty()){
+            return true;
+        }
+
+        return false;
+
     }
 
 

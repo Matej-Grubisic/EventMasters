@@ -2,6 +2,7 @@ package GUI.controllers;
 
 import BE.Event;
 import BLL.EventLogic;
+import BLL.Notifications;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,6 +42,12 @@ import java.util.ArrayList;
      @FXML
      private EventMasterController eventMasterController;
      ArrayList<Image> eventImages = new ArrayList<>();
+
+     Notifications nt=new Notifications();
+
+
+
+
      public void setSelectedEvent(Event selectedEvent) {
          this.selectedEvent = selectedEvent;
          loadEventData();
@@ -83,20 +90,34 @@ import java.util.ArrayList;
          String location = eventLoc.getText();
          String time = eventStart.getText();
          String description = eventDescription.getText();
+         if (fieldCheck()) {
 
 
-         selectedEvent.updateEvent(time, location, description, name);
-         eventLogic.updateEvent(selectedEvent);
+             selectedEvent.updateEvent(time, location, description, name);
+             eventLogic.updateEvent(selectedEvent);
 
-         closeEditEvent();
-         ieController.setEvent(selectedEvent);
-         ieController.updateUIInfo();
-         ieController.updateEvent(eventLogic.getAllEvents());
+             closeEditEvent();
+             ieController.setEvent(selectedEvent);
+             ieController.updateUIInfo();
+             ieController.updateEvent(eventLogic.getAllEvents());
+             nt.showSuccess("Successfully edited the event");
+         }else{
+             nt.showError("Please fill out all of the fields");
+         }
          // Reload the InfoEvent.fxml to reflect the updated event
          //openInfoEventWindow();
          //ieController.reloadEventMasterFXML();
      }
 
+
+     public boolean fieldCheck(){
+         if (!eventStart.getText().isEmpty() && !eventLoc.getText().isEmpty()&&!eventName.getText().isEmpty()){
+             return true;
+         }
+
+         return false;
+
+     }
      private void openInfoEventWindow() {
          try {
              FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/InfoEvent.fxml"));

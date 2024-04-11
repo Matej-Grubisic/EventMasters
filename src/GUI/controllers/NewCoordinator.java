@@ -2,6 +2,7 @@ package GUI.controllers;
 
 import BE.Coordinator;
 import BLL.CoordinatorLogic;
+import BLL.Notifications;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -24,27 +25,43 @@ public class NewCoordinator {
     private TextField CooUserName;
 
     CoordinatorLogic coordinatorLogic = new CoordinatorLogic();
+    Notifications nt=new Notifications();
     private ViewCoordinator viewcontroller;
 
     public void ClickCreateBTN(ActionEvent actionEvent) throws NoSuchAlgorithmException {
             String username = CooUserName.getText();
             String enteredPassword = CooPassword.getText();
+            if(fieldCheck()) {
 
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] encodedhash = digest.digest(enteredPassword.getBytes(StandardCharsets.UTF_8));
+                MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                byte[] encodedhash = digest.digest(enteredPassword.getBytes(StandardCharsets.UTF_8));
 
-            //converts the hashed pass to hexadecimal
-            enteredPassword = bytesToHex(encodedhash);
+                //converts the hashed pass to hexadecimal
+                enteredPassword = bytesToHex(encodedhash);
 
-            Coordinator coordinator = new Coordinator(username, enteredPassword);
-            coordinatorLogic.createCoordinator(coordinator);
+                Coordinator coordinator = new Coordinator(username, enteredPassword);
+                coordinatorLogic.createCoordinator(coordinator);
 
-            Coordinator newCoor = coordinatorLogic.getCoordinator();
-            viewcontroller.UpdateTable(newCoor);
+                Coordinator newCoor = coordinatorLogic.getCoordinator();
+                viewcontroller.UpdateTable(newCoor);
 
-            Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-            currentStage.close();
+                Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+                currentStage.close();
 
+                nt.showSuccess("Successfully created an event coordinator");
+            }else{
+                nt.showError("Please fill out all of the fields");
+            }
+
+
+    }
+
+    public boolean fieldCheck(){
+        if (!CooUserName.getText().isEmpty() && !CooPassword.getText().isEmpty()){
+            return true;
+        }
+
+        return false;
 
     }
 

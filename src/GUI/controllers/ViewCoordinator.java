@@ -3,6 +3,7 @@ package GUI.controllers;
 import BE.Coordinator;
 import BLL.CoordinatorLogic;
 import BLL.EventEvCoLogic;
+import BLL.Notifications;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ViewCoordinator implements Initializable{
@@ -41,6 +43,7 @@ public class ViewCoordinator implements Initializable{
 
 
     CoordinatorLogic coorLogic = new CoordinatorLogic();
+    Notifications nt=new Notifications();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -79,18 +82,29 @@ public class ViewCoordinator implements Initializable{
             showError("A Coordinator cannot create new Coordinators");
         }
 
+
     }
 
     public void ClickDeleteCoordinatorBTN(ActionEvent actionEvent) throws IOException {
         if (LogInController.loggedUser == 2) {
-            EventEvCoLogic EventEvCoLogic = new EventEvCoLogic();
-            System.out.println(EvCoTable.getSelectionModel().getSelectedItem().getId());
-            EventEvCoLogic.delEvCo2(EvCoTable.getSelectionModel().getSelectedItem().getId());
-            coorLogic.deleteCordinator(EvCoTable.getSelectionModel().getSelectedItem().getId());
+            Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationDialog.setTitle("Confirmation");
+            confirmationDialog.setHeaderText("Are you sure you want to delete this Event Coordinator?");
+            confirmationDialog.setContentText("Any unsaved changes will be lost.");
+            Optional<ButtonType> result = confirmationDialog.showAndWait();
 
-            EvCoTable.setEditable(true);
-            EvCoTable.getItems().remove(EvCoTable.getSelectionModel().getSelectedItem());
-            EvCoTable.setEditable(false);
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                EventEvCoLogic EventEvCoLogic = new EventEvCoLogic();
+                System.out.println(EvCoTable.getSelectionModel().getSelectedItem().getId());
+                EventEvCoLogic.delEvCo2(EvCoTable.getSelectionModel().getSelectedItem().getId());
+                coorLogic.deleteCordinator(EvCoTable.getSelectionModel().getSelectedItem().getId());
+
+                EvCoTable.setEditable(true);
+                EvCoTable.getItems().remove(EvCoTable.getSelectionModel().getSelectedItem());
+                EvCoTable.setEditable(false);
+                nt.showSuccess("Successfully deleted an event coordinator");
+
+            }
         }
         else {
             showError("A Coordinator cannot delete other event Coordinators");

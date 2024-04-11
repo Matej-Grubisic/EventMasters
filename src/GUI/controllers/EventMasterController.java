@@ -2,6 +2,7 @@ package GUI.controllers;
 
 import BE.Event;
 import BLL.EventLogic;
+import BLL.Notifications;
 import GUI.controllers.LogInController;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -41,6 +42,7 @@ public class EventMasterController implements Initializable {
     EventLogic el=new EventLogic();
     private Event selectedEvent;
     private List<ImageView> imageViews;
+    Notifications nt=new Notifications();
 
 
     /**
@@ -98,6 +100,7 @@ public class EventMasterController implements Initializable {
         Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
         LogInController.loggedUser = 0;
+        nt.showSuccess("Successfully logged out");
     }
 
 
@@ -186,7 +189,7 @@ public class EventMasterController implements Initializable {
 
 
     ///IMAGES DISPLAYING LOGIC.
-    public void updateUIMainImages(List<Image> images) {
+    public void updateUIMainImages(ArrayList<Image> images) {
         if (images != null && !images.isEmpty()) {
             Collections.reverse(images);
             for (int i = 0; i < Math.min(images.size(), imageViews.size()); i++) {

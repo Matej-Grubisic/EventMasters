@@ -5,6 +5,7 @@ import BE.Event;
 import BLL.CoordinatorLogic;
 import BLL.EventEvCoLogic;
 import BLL.EventLogic;
+import BLL.Notifications;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class IEController {
     public Label coordinatorLbl;
@@ -44,6 +47,7 @@ public class IEController {
     CoordinatorLogic coorLogic = new CoordinatorLogic();
 
     private EventMasterController emc;
+    Notifications nt=new Notifications();
     private ObjectProperty<Event> updatedEventProperty = new SimpleObjectProperty<>(null);
 
 
@@ -129,17 +133,27 @@ public class IEController {
      */
     public void deleteEvent(ActionEvent actionEvent) throws SQLException, InterruptedException {
         if (selectedEvent != null) {
-            el.deleteEvent(selectedEvent);
+            Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationDialog.setTitle("Confirmation");
+            confirmationDialog.setHeaderText("Are you sure you want to delete this event?");
+            confirmationDialog.setContentText("Any unsaved changes will be lost.");
+            Optional<ButtonType> result = confirmationDialog.showAndWait();
 
-            emc.removeEvent(selectedEvent);
+            if (result.isPresent() && result.get() == ButtonType.OK) {
 
-            emc.updateUIMain(el.getAllEvents());
+                el.deleteEvent(selectedEvent);
 
-            Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-            currentStage.close();
+                emc.removeEvent(selectedEvent);
 
+                emc.updateUIMain(el.getAllEvents());
+
+                Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+                currentStage.close();
+                nt.showSuccess("Successfully deleted the event");
+
+
+            }
         }
-
     }
 
     void reloadEventMasterFXML() {
@@ -161,7 +175,7 @@ public class IEController {
                     Parent root = scene.getRoot();
                     if (root != null && root.getId() != null && root.getId().equals("EventMasterRoot")) {
                         stage.close();
-                        break;  // Close the first matching stage and exit loop
+                        break;
                     }
                 }
             }
@@ -171,10 +185,9 @@ public class IEController {
             Parent eventMasterRoot = eventMasterLoader.load();
 
             Stage eventMasterStage = new Stage();
-            eventMasterStage.setTitle("Event Master"); // Set window title
+            eventMasterStage.setTitle("Event Master");
             eventMasterStage.setScene(new Scene(eventMasterRoot));
 
-            // Show EventMaster.fxml stage
             eventMasterStage.show();
 
         } catch (IOException e) {
