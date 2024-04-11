@@ -93,7 +93,7 @@ public class ViewCoordinator implements Initializable{
             EvCoTable.setEditable(false);
         }
         else {
-            showError("A Coordinator cannot delete othter event Coordinators");
+            showError("A Coordinator cannot delete other event Coordinators");
         }
     }
 

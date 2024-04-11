@@ -189,15 +189,20 @@ public class IEController {
      * @param actionEvent
      */
     public void genTicket(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TicketGen.fxml"));
-        Parent root = loader.load();
+        if(LogInController.loggedUser == 1) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TicketGen.fxml"));
+            Parent root = loader.load();
 
-        TGController controller = loader.getController();
-        controller.setInfoEventController(this);
+            TGController controller = loader.getController();
+            controller.setInfoEventController(this);
 
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        }
+        else {
+            showError("An Admin cannot generate tickets");
+        }
     }
 
 
