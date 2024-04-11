@@ -31,4 +31,8 @@ public class EventLogic {
     public Event getEvent(int eventID){
         return eventDAO.getEvent(eventID);
     }
+
+    public List<Event> searchEvents(String searchText) {
+        return eventDAO.searchEvents(searchText);
+    }
 }

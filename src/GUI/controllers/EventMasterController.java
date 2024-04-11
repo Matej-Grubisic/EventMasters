@@ -12,10 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,6 +29,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class EventMasterController implements Initializable {
+    @FXML
+    private TextField searchField;
     @FXML
     private ImageView imageV1,imageV2,imageV3,imageV4,imageV5,imageV6,imageV7,imageV8,imageV9;
     @FXML
@@ -62,10 +61,15 @@ public class EventMasterController implements Initializable {
             imageViews.add(imageV7);
             imageViews.add(imageV8);
             imageViews.add(imageV9);
+
+            searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+                handleSearch();
+            });
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 
 
@@ -318,5 +322,15 @@ public class EventMasterController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(errorMessage);
         alert.showAndWait();
+    }
+    public void handleSearch() {
+        String searchText = searchField.getText().trim().toLowerCase();
+        List<Event> matchingEvents = new ArrayList<>();
+
+        List<Event> eventsFromSearch = el.searchEvents(searchText);
+
+        matchingEvents.addAll(eventsFromSearch);
+
+        updateUIMain(matchingEvents);
     }
 }

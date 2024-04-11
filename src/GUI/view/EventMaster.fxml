@@ -37,7 +37,7 @@
             </Button>
          </children>
       </HBox>
-      <TextField layoutX="714.0" layoutY="64.0" prefHeight="26.0" prefWidth="191.0" promptText="Search events" styleClass="search-field" stylesheets="@../MainScreen.css" />
+      <TextField fx:id="searchField" layoutX="714.0" layoutY="64.0" prefHeight="26.0" prefWidth="191.0" promptText="Search events" styleClass="search-field" stylesheets="@../MainScreen.css" />
       <Text layoutX="26.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menu-bar" text="Upcoming events:">
          <font>
             <Font size="24.0" />

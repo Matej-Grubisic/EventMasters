@@ -14,5 +14,7 @@ public interface IEventDAO {
     void updateEvent(Event event);
     ArrayList<Integer> getEventID(int eventID);
 
+    List<Event> searchEvents(String searchText);
+
     Event getEvent(int eventID);
 }

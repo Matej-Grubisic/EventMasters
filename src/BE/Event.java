@@ -10,6 +10,14 @@ public class Event {
 
     int id;
 
+    public Event() {
+
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Event(String time, String description, String location, String name) {
         this.time=time;
         this.description=description;

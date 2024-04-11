@@ -122,6 +122,30 @@ public class EventDAO implements IEventDAO{
     }
 
     @Override
+    public List<Event> searchEvents(String searchText) {
+        List<Event> matchingEvents = new ArrayList<>();
+        try (Connection con = dbConnector.getConn()) {
+            String sql = "SELECT * FROM Event WHERE Name LIKE ? OR Time LIKE ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%" + searchText + "%");
+            pstmt.setString(2, "%" + searchText + "%");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Event event = new Event();
+                event.setId(rs.getInt("ID"));
+                event.setName(rs.getString("Name"));
+                event.setTime(rs.getString("Time"));
+                matchingEvents.add(event);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return matchingEvents;
+    }
+
+
+
+    @Override
     public Event getEvent(int eventID) {
         try (Connection con = dbConnector.getConn()) {
             String sql = "SELECT * FROM Event WHERE ID=?";
