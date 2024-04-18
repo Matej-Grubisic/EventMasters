@@ -43,7 +43,6 @@ public class EventMasterController implements Initializable {
     private List<ImageView> imageViews;
     Notifications nt=new Notifications();
 
-
     /**
      *  Sets the events to the ui when fxml is loaded from database.
      */
@@ -66,12 +65,9 @@ public class EventMasterController implements Initializable {
                 handleSearch();
             });
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            nt.showError("Failed to load events: " + e.getMessage());
         }
     }
-
-
-
 
     /**
      * Addes newly created events to the list and updates the UI with it.

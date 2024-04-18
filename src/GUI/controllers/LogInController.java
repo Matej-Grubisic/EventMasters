@@ -2,6 +2,7 @@ package GUI.controllers;
 
 import BE.Admin;
 import BE.Coordinator;
+import BLL.Notifications;
 import DAL.AdminDAO;
 import DAL.CoordinatorDAO;
 import javafx.event.ActionEvent;
@@ -41,7 +42,7 @@ public class LogInController implements Initializable {
     private TextField passwordLbl;
     //If logged User is Event Coordinator logggedUser = 1 if logged User is Admin loggedUser = 2
     public static int loggedUser;
-
+    private Notifications nt = new Notifications();
 
     //When the FXML file is loaded sets background image to the one mentioned.
     @Override
@@ -86,37 +87,31 @@ public class LogInController implements Initializable {
                 primaryStage.setScene(new Scene(root));
                 primaryStage.show();
                 loggedUser = 1;
+                nt.showSuccess("Logged in successfully");
                 // Close the login window
                 Stage stage = (Stage) passwordLbl.getScene().getWindow();
                 stage.close();
-
             }
         }
 
         AdminDAO adminDAO = new AdminDAO();
         Admin admin = adminDAO.getAdmin();
-        // Check if the user is an Admin
+            // Check if the user is an Admin
             if (enteredUsername.equals(admin.getUsername()) && hashedPassword.equals(admin.getPassword())) {
-                // Redirect to Admin interface||Should consider if we going to have Admin and Coordinator separete FXML's !!!!
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
                 Parent root = loader.load();
-                //AdminDashboardController controller = loader.getController();
                 // Pass admin data to the dashboard controller if needed
                 Stage primaryStage = new Stage();
                 primaryStage.setScene(new Scene(root));
                 primaryStage.show();
                 loggedUser = 2;
-
+                nt.showSuccess("Logged in successfully");
                 // Close the login window
                 Stage stage = (Stage) passwordLbl.getScene().getWindow();
                 stage.close();
             } else if(!hashedPassword.equals(admin.getPassword()) && !passwords.contains(hashedPassword)){
                 showError("Incorrect username or password");
             }
-
-                // Check if the user is an Event Coordinator
-
-
     }
 
 

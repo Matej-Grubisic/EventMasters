@@ -2,6 +2,7 @@ package DAL;
 
 import BE.Event;
 import BE.Ticket;
+import BLL.Notifications;
 import BLL.dbConnector;
 
 import java.sql.Connection;
@@ -13,6 +14,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class TicketDAO implements ITicketDAO {
+    private Notifications nt = new Notifications();
+
     @Override
     public void createTicket(Ticket ticket, ArrayList<Integer> eventID) {
         try (Connection con = dbConnector.getConn()) {
@@ -27,12 +30,10 @@ public class TicketDAO implements ITicketDAO {
                     pstmt.addBatch(); // Add the parameters to the batch
                 }
                 pstmt.executeBatch(); // Execute the batch insert
-
-
-
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            nt.showError("System error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

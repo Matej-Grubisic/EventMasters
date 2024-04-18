@@ -62,7 +62,6 @@ public class IEController {
         currentStage.close();
     }
 
-
     /**
      * Sets the passed event as a selected event.
      * @param event
@@ -71,7 +70,6 @@ public class IEController {
         this.selectedEvent = event;
         updateUIInfo();
     }
-
 
     /**
      * Updates labels with info corresponding to the selected event.
@@ -89,8 +87,6 @@ public class IEController {
             coordinatorLbl.setText(text[0]);
         }
     }
-
-
 
     /**
      * Open EditEventController for editing the selected event.
@@ -112,12 +108,6 @@ public class IEController {
         else{
             showError("An Admin cannot edit Events");
         }
-    }
-    /**
-     * Get the updated event property.
-     */
-    public ObjectProperty<Event> updatedEventProperty() {
-        return updatedEventProperty;
     }
     /**
      * Set the updated event and notify listeners.
@@ -150,52 +140,9 @@ public class IEController {
                 Stage currentStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
                 currentStage.close();
                 nt.showSuccess("Successfully deleted the event");
-
-
             }
         }
     }
-
-    void reloadEventMasterFXML() {
-        try {
-            // Retrieve all open stages
-            List<Stage> openStages = new ArrayList<>();
-
-            // Get all windows and filter out Stages
-            for (Window window : Window.getWindows()) {
-                if (window instanceof Stage) {
-                    openStages.add((Stage) window);
-                }
-            }
-
-            // Find and close the stage containing EventMaster.fxml
-            for (Stage stage : openStages) {
-                Scene scene = stage.getScene();
-                if (scene != null) {
-                    Parent root = scene.getRoot();
-                    if (root != null && root.getId() != null && root.getId().equals("EventMasterRoot")) {
-                        stage.close();
-                        break;
-                    }
-                }
-            }
-
-            // Open EventMaster.fxml
-            FXMLLoader eventMasterLoader = new FXMLLoader(getClass().getResource("../view/EventMaster.fxml"));
-            Parent eventMasterRoot = eventMasterLoader.load();
-
-            Stage eventMasterStage = new Stage();
-            eventMasterStage.setTitle("Event Master");
-            eventMasterStage.setScene(new Scene(eventMasterRoot));
-
-            eventMasterStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
 
     /**
      * Opens FXML file for choosing ticket type and creating it.

@@ -1,6 +1,7 @@
 package DAL;
 
 import BE.Coordinator;
+import BLL.Notifications;
 import BLL.dbConnector;
 
 import javax.xml.transform.Result;
@@ -8,6 +9,8 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class CoordinatorDAO implements ICoordinatorDAO {
+
+    private Notifications nt = new Notifications();
 
     @Override
     public Coordinator getCoordinator(){
@@ -77,7 +80,8 @@ public class CoordinatorDAO implements ICoordinatorDAO {
             pstmt.execute();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            nt.showError("System error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
     @Override
@@ -88,7 +92,8 @@ public class CoordinatorDAO implements ICoordinatorDAO {
           pstmt.setInt(1, id);
           pstmt.execute();
       } catch (SQLException e) {
-          throw new RuntimeException(e);
+          nt.showError("System error: " + e.getMessage());
+          e.printStackTrace();
       }
 
     }

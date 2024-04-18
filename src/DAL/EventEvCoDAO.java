@@ -1,6 +1,7 @@
 package DAL;
 
 import BE.Event;
+import BLL.Notifications;
 import BLL.dbConnector;
 
 import java.sql.Connection;
@@ -10,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EventEvCoDAO implements IEventEvCoDAO {
+    private Notifications nt = new Notifications();
+
     @Override
     public void createEventEvCo(int eventId, int coorId) {
         try (Connection con = dbConnector.getConn()) {
@@ -20,7 +23,8 @@ public class EventEvCoDAO implements IEventEvCoDAO {
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            nt.showError("System error: " + e.getMessage());
+            e.printStackTrace();
         }
 
     }
@@ -51,7 +55,8 @@ public class EventEvCoDAO implements IEventEvCoDAO {
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            nt.showError("System error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

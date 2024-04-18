@@ -32,21 +32,15 @@ import java.util.ArrayList;
      private TextField eventDescription;
      @FXML
      private Button cancelButton;
-
      @FXML
      private Button saveButton;
 
      private Event selectedEvent;
      private EventLogic eventLogic = new EventLogic();
      private IEController ieController;
-     @FXML
-     private EventMasterController eventMasterController;
      ArrayList<Image> eventImages = new ArrayList<>();
 
-     Notifications nt=new Notifications();
-
-
-
+     private Notifications nt = new Notifications();
 
      public void setSelectedEvent(Event selectedEvent) {
          this.selectedEvent = selectedEvent;
@@ -57,23 +51,18 @@ import java.util.ArrayList;
          this.ieController = ieController;
      }
 
-
-
-     public void setEventMasterController(EventMasterController eventMasterController) {
-         this.eventMasterController = eventMasterController;
-     }
-
      @FXML
      private void initialize() {
-         cancelButton.setOnAction(event -> closeEditEvent());
+         cancelButton.setOnAction(this::cancelEvent);
          saveButton.setOnAction(event -> {
              try {
                  saveChanges();
              } catch (SQLException e) {
-                 throw new RuntimeException(e);
+                 nt.showError("Failed to save event changes: " + e.getMessage());
+                 e.printStackTrace();
              }
          });
-         loadEventData(); // Call method to load event data when FXML is loaded
+         loadEventData();
      }
 
      private void loadEventData() {
@@ -114,27 +103,8 @@ import java.util.ArrayList;
          if (!eventStart.getText().isEmpty() && !eventLoc.getText().isEmpty()&&!eventName.getText().isEmpty()){
              return true;
          }
-
          return false;
 
-     }
-     private void openInfoEventWindow() {
-         try {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/InfoEvent.fxml"));
-             Parent root = loader.load();
-
-             IEController controller = loader.getController();
-             controller.setEvent(selectedEvent);
-             controller.setEventMasterController(eventMasterController);
-             controller.updateUIInfo(); // Update UI with the updated event
-
-             Stage primaryStage = new Stage();
-             primaryStage.setTitle("Info Event"); // Set window title
-             primaryStage.setScene(new Scene(root));
-             primaryStage.show();
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
      }
 
      private void closeEditEvent() {

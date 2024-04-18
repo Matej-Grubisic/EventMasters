@@ -1,6 +1,7 @@
 package DAL;
 
 import BE.Event;
+import BLL.Notifications;
 import BLL.dbConnector;
 
 import java.sql.Connection;
@@ -10,7 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class EventDAO implements IEventDAO{
+    private Notifications nt = new Notifications();
     @Override
     public void createEvent(Event event) {
         try (Connection con = dbConnector.getConn()) {
@@ -24,7 +27,8 @@ public class EventDAO implements IEventDAO{
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            nt.showError("System error: " + e.getMessage());
+            e.printStackTrace();
         }
 
     }
@@ -72,7 +76,8 @@ public class EventDAO implements IEventDAO{
                 pstmt2.executeUpdate();
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            nt.showError("System error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -99,7 +104,8 @@ public class EventDAO implements IEventDAO{
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Error updating event: " + e.getMessage(), e);
+            nt.showError("System error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -138,7 +144,8 @@ public class EventDAO implements IEventDAO{
                 matchingEvents.add(event);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            nt.showError("System error: " + e.getMessage());
+            e.printStackTrace();;
         }
         return matchingEvents;
     }

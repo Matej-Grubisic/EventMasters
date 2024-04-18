@@ -167,10 +167,6 @@ public class TicketsViewController implements Initializable {
         }
     }
 
-    public void deleteTicket(ActionEvent actionEvent) {
-
-    }
-
     private void showError(String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Login Error");
